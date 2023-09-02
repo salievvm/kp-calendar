@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Button, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import useApp from './hooks/useApp';
+import CustomTypography from '../../components/@ui/CustomTypography';
 
 const FormCandidate = () => {
   const {
@@ -9,7 +10,11 @@ const FormCandidate = () => {
   } = useApp();
 
   return (
-    <>
+    <Grid
+      container
+      direction="column"
+      gap={1}
+    >
       <Typography>Анкета кандидата</Typography>
       <Typography>Заполните, пожалуйста, анкету, отвечая на все вопросы полно и не оставляя пустых строчек</Typography>
       <Button
@@ -17,7 +22,8 @@ const FormCandidate = () => {
       >
         Сделать загрузку
       </Button>
-    </>
+      <CustomTypography />
+    </Grid>
   )
 };
 

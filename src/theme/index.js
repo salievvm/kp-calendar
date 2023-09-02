@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { CssBaseline } from '@mui/material';
 import 'typeface-inter';
 
 import {
@@ -61,7 +60,6 @@ const theme = createTheme({
 const ThemeProvider = ({ children }) => {
   return (
     <StyledEngineProvider injectFirst>
-      <CssBaseline />
       <MUIThemeProvider theme={theme}>
         {children}
       </MUIThemeProvider>

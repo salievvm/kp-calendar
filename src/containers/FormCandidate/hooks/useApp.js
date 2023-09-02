@@ -1,13 +1,17 @@
+import React from "react";
 import { useSelector } from "react-redux";
 
-import App from "../../../redux/actions/model/App";
+import { obApp, obForm } from "../../../redux/actions/model";
 
 const useApp = () => {
   const {
     app,
+    form,
   } = useSelector(state => state);
 
-  const obApp = new App();
+  const schema = React.useMemo(() => {
+    return form.schema
+  }, [form]);
 
   const handleMakeLoading = () => {
     obApp.setLoading();
@@ -16,9 +20,20 @@ const useApp = () => {
     }, 2000)
   }
 
+  const handleFieldChange = (section, code, value) => {
+    obForm.setField(section, code, value);
+  }
+
+  const handleSendForm = () => {
+    obForm.send();
+  }
+
   return {
     app,
+    schema,
     handleMakeLoading,
+    handleFieldChange,
+    handleSendForm,
   }
 };
 

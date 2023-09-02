@@ -15,8 +15,8 @@ const FormCandidate = () => {
       direction="column"
       gap={1}
     >
-      <Typography>Анкета кандидата</Typography>
-      <Typography>Заполните, пожалуйста, анкету, отвечая на все вопросы полно и не оставляя пустых строчек</Typography>
+      <Typography variant="h1">Анкета кандидата</Typography>
+      <Typography variant="subtitle1">Заполните, пожалуйста, анкету, отвечая на все вопросы полно и не оставляя пустых строчек</Typography>
       <Button
         onClick={handleMakeLoading}
       >

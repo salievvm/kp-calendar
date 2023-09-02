@@ -12,7 +12,7 @@ registerLocale("ru", ru);
 function App() {
 	return (
 		<ThemeProvider>
-			<Container>
+			<Container maxWidth="md">
 				{/* <DatePicker /> */}
 				<FormCandidate />
 				<AppLoading />

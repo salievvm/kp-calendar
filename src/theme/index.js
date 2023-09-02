@@ -7,57 +7,19 @@ import {
   createTheme
 } from "@mui/material/styles";
 
-const theme = createTheme({
-  typography: {
-    fontFamily: 'Inter, Arial, sans-serif',
-    color: '#1F1F1F',
-    h1: {
-      fontSize: '32px',
-      fontWeight: 700,
-      lineHeight: '40px',
-    },
-    h2: {
-      fontSize: '24px',
-      fontWeight: 700,
-      lineHeight: '32px',
-    },
-    h3: {
-      fontSize: '16px',
-      fontWeight: 700,
-      lineHeight: '24px',
-    },
-    subtitle1: {
-      fontSize: '16px',
-      fontWeight: 500,
-      lineHeight: '24px',
-      color: '#9F9F9F',
-    },
-    body1: {
-      fontSize: '14px',
-      fontWeight: 400,
-      lineHeight: '24px',
-    },
-    body2: {
-      fontSize: '14px',
-      fontWeight: 400,
-      lineHeight: '24px',
-      color: '#9F9F9F',
-    },
-    caption: {
-      fontSize: '12px',
-      fontWeight: 400,
-      lineHeight: '16px',
-      color: '#9F9F9F',
-    },
-    button: {
-      fontSize: '14px',
-      fontWeight: 700,
-      lineHeight: '24px',
-    },
-  },
+import palette from './palette';
+import typography from './typography';
+
+import componentsOverride from './overrides';
+
+const options = createTheme({
+  palette,
+  typography,
 });
 
 const ThemeProvider = ({ children }) => {
+  const theme = createTheme(options);
+  theme.components = componentsOverride(theme);
   return (
     <StyledEngineProvider injectFirst>
       <MUIThemeProvider theme={theme}>

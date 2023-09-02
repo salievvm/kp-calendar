@@ -4,6 +4,7 @@ import { Button, Grid, Typography } from '@mui/material';
 import useApp from './hooks/useApp';
 import CustomTypography from '../../components/@ui/CustomTypography';
 import CustomCard from '../../components/@ui/CustomCard';
+import CustomAlert from '../../components/@ui/CustomAlert';
 
 const FormCandidate = () => {
   const {
@@ -24,15 +25,17 @@ const FormCandidate = () => {
         <Typography maxWidth="497px" variant="subtitle1">Заполните, пожалуйста, анкету, отвечая на все вопросы полно и не оставляя пустых строчек</Typography>
       </Grid>
       <CustomCard>
-        <Typography variant="h3">Ваши персональные данные надежно защищены!</Typography>
-        <Typography variant="body1">В первую очередь благодаря безопасному протоколу HTTPS, который работает абсолютно на всех сервисах НАО «Красная поляна»</Typography>
+        <CustomAlert icon={false}>
+          <Typography variant="h3" gutterBottom>Ваши персональные данные надежно защищены!</Typography>
+          <Typography variant="body1">В первую очередь благодаря безопасному протоколу HTTPS, который работает абсолютно на всех сервисах НАО «Красная поляна»</Typography>
+        </CustomAlert>
       </CustomCard>
-
       <Grid
         container
         direction="column"
         gap={2}
         alignItems="center"
+        marginTop={2}
       >
         <CustomTypography />
         <Button

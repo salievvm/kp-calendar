@@ -15,7 +15,6 @@ export default function CustomCard({
         padding,
         width,
         margin,
-        borderRadius: '24px',
       }}
     >
       {children}
@@ -31,7 +30,7 @@ CustomCard.propTypes = {
 };
 
 CustomCard.defaultProps = {
-  padding: 24,
+  padding: 48,
   width: '100%',
   margin: 0,
 };

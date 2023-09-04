@@ -46,6 +46,7 @@ const DisplayField = ({
 
     default:
       return <CustomTextField
+        required={required}
         label={title}
         value={value}
         onChange={onChange}

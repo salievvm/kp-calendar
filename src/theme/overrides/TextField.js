@@ -30,5 +30,12 @@ export default function TextField(theme) {
         },
       },
     },
+    MuiFormLabel: {
+      styleOverrides: {
+        asterisk: {
+          color: theme.palette.primary.main,
+        },
+      },
+    },
   };
 }

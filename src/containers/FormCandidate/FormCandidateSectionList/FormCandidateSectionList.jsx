@@ -18,7 +18,6 @@ const FormCandidateSectionList = ({
     <Grid container direction="column" gap={2}>
       {schema ? Object.keys(schema).map((key) => {
         const sectionType = schema[key].type || SECTION_TYPES.base;
-        console.log({ key, sectionType });
         return (
           <FormCandidateSection
             key={key}

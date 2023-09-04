@@ -35,8 +35,6 @@ const DisplayField = ({
   const fieldTheme = React.useContext(SectionThemeContext);
   const textFieldVariant = TEXT_FIELD_VARIANTS[fieldTheme];
 
-  console.log({fieldTheme, textFieldVariant});
-
   switch (type) {
     case radio:
       return <CustomSwitch

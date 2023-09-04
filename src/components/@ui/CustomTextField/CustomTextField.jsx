@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 import TextField from '@mui/material/TextField';
 
-// const VARIANTS = {
-//   base: {},
-//   filled: {
-//     bgcolor: 'background.color',
-//   },
-// };
+const VARIANTS = {
+  filled: {},
+  outlined: {
+    '& .MuiFilledInput-root': {
+      backgroundColor: 'background.paper',
+    },
+  },
+};
 export default function CustomTextField({
   label,
   value,
@@ -22,15 +24,16 @@ export default function CustomTextField({
     onChange(e.currentTarget.value);
   }
 
-  console.log({ variant });
+  const sx = VARIANTS[variant];
 
   return (
     <TextField
       fullWidth
       label={label}
-      variant={variant}
+      variant="filled"
       value={val}
       onChange={handleChangeValue}
+      sx={sx}
     />
   );
 };

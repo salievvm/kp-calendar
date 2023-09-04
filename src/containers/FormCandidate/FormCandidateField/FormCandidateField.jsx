@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { FIELD_TYPES } from '../../../consts';
 import CustomTextField from '../../../components/@ui/CustomTextField';
+import CustomSwitch from '../../../components/@ui/CustomSwitch';
+
 import useApp from '../hooks/useApp';
 
 const {
@@ -20,6 +22,7 @@ const DisplayField = ({
   onChange,
 }) => {
   const {
+    value,
     title,
     code,
     type,
@@ -28,19 +31,20 @@ const DisplayField = ({
   } = field;
 
   switch (type) {
-    case text:
-      return <CustomTextField
-        label={field.title}
-        value={field.value}
+    case radio:
+      return <CustomSwitch
+        required={required}
+        label={title}
+        value={value}
         onChange={onChange}
       />
 
     default:
       return <CustomTextField
-        label={field.title}
-        value={field.value}
-        onChange={onChange}
-      />
+      label={title}
+      value={value}
+      onChange={onChange}
+    />
   }
 }
 

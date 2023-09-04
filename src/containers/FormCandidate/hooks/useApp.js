@@ -28,9 +28,19 @@ const useApp = () => {
     obForm.send();
   }
 
+  const title = 'Анкета кандидата';
+  const subtitle = 'Заполните, пожалуйста, анкету, отвечая на все вопросы полно и не оставляя пустых строчек';
+
+  const alertTitle = 'Ваши персональные данные надежно защищены!';
+  const alertSubtitle = 'В первую очередь благодаря безопасному протоколу HTTPS, который работает абсолютно на всех сервисах НАО «Красная поляна»';
+
   return {
     app,
     schema,
+    title,
+    subtitle,
+    alertTitle,
+    alertSubtitle,
     handleMakeLoading,
     handleFieldChange,
     handleSendForm,

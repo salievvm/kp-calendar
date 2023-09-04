@@ -1,4 +1,7 @@
-import { FIELD_TYPES } from "../../../../consts";
+import {
+  FIELD_TYPES,
+  SECTION_TYPES,
+} from "../../../../consts";
 
 const {
   text,
@@ -9,6 +12,11 @@ const {
   email,
   date,
 } = FIELD_TYPES;
+
+const {
+  base,
+  filled,
+} = SECTION_TYPES;
 
 const schema = {
   main: {
@@ -92,6 +100,7 @@ const schema = {
   },
   passport: {
     section: 'Паспортные данные',
+    type: filled,
     subtitle: 'Заполните данные как в паспорте',
     items: {
       dateBirth: {

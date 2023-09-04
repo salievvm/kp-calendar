@@ -2,6 +2,7 @@
 import Alert from './Alert';
 import Container from './Container';
 import Paper from './Paper';
+import TextField from './TextField';
 // ----------------------------------------------------------------------
 
 export default function ComponentsOverrides(theme) {
@@ -9,5 +10,6 @@ export default function ComponentsOverrides(theme) {
     Alert(theme),
     Container(theme),
     Paper(theme),
+    TextField(theme),
   );
-}
+};

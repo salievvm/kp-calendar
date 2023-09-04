@@ -4,6 +4,7 @@ import { Button, Grid } from '@mui/material';
 
 import FormCandidateSection from '../FormCandidateSection';
 import useApp from '../hooks/useApp';
+import { SECTION_TYPES } from '../../../consts';
 
 
 const FormCandidateSectionList = ({
@@ -16,9 +17,12 @@ const FormCandidateSectionList = ({
   return (
     <Grid container direction="column" gap={2}>
       {schema ? Object.keys(schema).map((key) => {
+        const sectionType = schema[key].type || SECTION_TYPES.base;
+        console.log({ key, sectionType });
         return (
           <FormCandidateSection
             key={key}
+            sectionType={sectionType}
             sectionCode={key}
             schema={schema}
           />

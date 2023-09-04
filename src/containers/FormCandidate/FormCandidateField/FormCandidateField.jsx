@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FIELD_TYPES } from '../../../consts';
+import { FIELD_TYPES, TEXT_FIELD_VARIANTS } from '../../../consts';
 import CustomTextField from '../../../components/@ui/CustomTextField';
 import CustomSwitch from '../../../components/@ui/CustomSwitch';
 
 import useApp from '../hooks/useApp';
+
+import { SectionThemeContext } from '../FormCandidateSection/SectionProvider';
 
 const {
   text,
@@ -30,6 +32,11 @@ const DisplayField = ({
     required,
   } = field;
 
+  const fieldTheme = React.useContext(SectionThemeContext);
+  const textFieldVariant = TEXT_FIELD_VARIANTS[fieldTheme];
+
+  console.log({fieldTheme, textFieldVariant});
+
   switch (type) {
     case radio:
       return <CustomSwitch
@@ -41,10 +48,11 @@ const DisplayField = ({
 
     default:
       return <CustomTextField
-      label={title}
-      value={value}
-      onChange={onChange}
-    />
+        label={title}
+        value={value}
+        onChange={onChange}
+        variant={textFieldVariant}
+      />
   }
 }
 

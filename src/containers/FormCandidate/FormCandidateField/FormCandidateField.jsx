@@ -52,6 +52,7 @@ const DisplayField = ({
         label={title}
         value={value}
         onChange={onChange}
+        theme={textFieldTheme}
       />
 
     default:

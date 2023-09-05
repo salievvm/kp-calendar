@@ -194,11 +194,11 @@ const schema = {
     subtitle: 'Привлекались ли Вы к административной/уголовной ответственности',
     items: {
       lawViolationArticle: {
-        title: '',
+        title: 'Укажите статью',
         code: '',
         type: text,
         col: 12,
-        required: false,
+        required: true,
       },
       notLawViolation: {
         title: 'Не привлекался',

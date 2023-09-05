@@ -2,6 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { IMaskInput } from 'react-imask';
 import TextField from '@mui/material/TextField';
+import { THEMES } from '../CustomTextField';
 
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
@@ -28,6 +29,7 @@ export default function CustomPhone({
   label,
   value,
   onChange,
+  theme,
   required,
 }) {
   const [val, setVal] = React.useState(value);
@@ -37,6 +39,8 @@ export default function CustomPhone({
     setVal(e.target.value);
     onChange(e.target.value);
   }
+
+  const sx = THEMES[theme];
 
   return (
     <TextField
@@ -51,6 +55,7 @@ export default function CustomPhone({
         inputComponent: TextMaskCustom,
       }}
       variant="filled"
+      sx={sx}
     />
   );
 };
@@ -59,6 +64,7 @@ CustomPhone.propTypes = {
   label: PropTypes.string,
   value: PropTypes.any,
   onChange: PropTypes.func,
+  theme: PropTypes.oneOf(['base', 'filled']).isRequired,
   required: PropTypes.bool,
 };
 

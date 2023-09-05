@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { TextField } from '@mui/material';
 
-const THEMES = {
+export const THEMES = {
   base: {},
   filled: {
     '& .MuiFilledInput-root': {
@@ -37,6 +37,7 @@ export default function CustomTextField({
       value={val}
       onChange={handleChangeValue}
       sx={sx}
+      type="email"
     />
   );
 };

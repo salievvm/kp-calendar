@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { FIELD_TYPES, TEXT_FIELD_THEMES } from '../../../consts';
-import { CustomTextField, CustomSwitch } from '../../../components/@ui/CustomFields';
+import {
+  CustomTextField,
+  CustomSwitch,
+  CustomPhone,
+} from '../../../components/@ui/CustomFields';
 
 import useApp from '../hooks/useApp';
 
@@ -37,6 +41,13 @@ const DisplayField = ({
   switch (type) {
     case radio:
       return <CustomSwitch
+        required={required}
+        label={title}
+        value={value}
+        onChange={onChange}
+      />
+    case phone:
+      return <CustomPhone
         required={required}
         label={title}
         value={value}

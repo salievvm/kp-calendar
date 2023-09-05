@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { FIELD_TYPES, TEXT_FIELD_THEMES } from '../../../consts';
-import CustomTextField from '../../../components/@ui/CustomTextField';
-import CustomSwitch from '../../../components/@ui/CustomSwitch';
+import { CustomTextField, CustomSwitch } from '../../../components/@ui/CustomFields';
 
 import useApp from '../hooks/useApp';
 

@@ -7,19 +7,41 @@ import { SECTION_TYPES } from '../../../consts';
 
 import FormCandidateField from '../FormCandidateField';
 import SectionProvider from './SectionProvider';
+import { InfoIcon } from '../../../assets/icons';
+import { CustomInformer } from '../../../components/@ui/CustomTypography';
 
 const FormCandidateSection = ({
   sectionType,
   sectionCode,
   schema,
 }) => {
+  const {
+    section,
+    info,
+    subtitle,
+    items,
+  } = schema[sectionCode];
   return (
     <React.Fragment>
-      <Typography variant="h2">{schema[sectionCode].section}</Typography>
+      {section ? (
+        <Grid item xs={12}>
+          <Typography variant="h2">{section}</Typography>
+        </Grid>
+      ) : null}
+      {info ? (
+        <Grid item xs={12}>
+          <CustomInformer>{info}</CustomInformer>
+        </Grid>
+      ) : null}
       <SectionProvider theme={sectionType}>
         <Grid container spacing={2}>
-          {Object.keys(schema[sectionCode].items).map((fieldCode) => {
-            const field = schema[sectionCode].items[fieldCode];
+          {subtitle ? (
+            <Grid item xs={12}>
+              <Typography variant="h3">{subtitle}</Typography>
+            </Grid>
+          ) : null}
+          {Object.keys(items).map((fieldCode) => {
+            const field = items[fieldCode];
             return (
               <Grid item xs={field.col} key={fieldCode}>
                 <FormCandidateField

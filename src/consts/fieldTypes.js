@@ -6,6 +6,7 @@ const FIELD_TYPES = {
   phone: 'phone',
   email: 'email',
   date: 'date',
+  list: 'list',
 };
 
 export default FIELD_TYPES;

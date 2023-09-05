@@ -23,8 +23,20 @@ export default function CustomTextField({
 
   const handleChangeValue = (e) => {
     setVal(e.currentTarget.value);
-    onChange(e.currentTarget.value);
   }
+
+  const deboundedOnChange = () => {
+    if (value !== val) {
+      onChange(val);
+    }
+  }
+
+  // React.useEffect(() => {
+  //   const delayDebounceFn = setTimeout(() => {
+  //   }, 1000)
+
+  //   return () => clearTimeout(delayDebounceFn)
+  // }, [val])
 
   const sx = THEMES[theme];
 
@@ -38,6 +50,7 @@ export default function CustomTextField({
       onChange={handleChangeValue}
       sx={sx}
       type="email"
+      onBlur={deboundedOnChange}
     />
   );
 };

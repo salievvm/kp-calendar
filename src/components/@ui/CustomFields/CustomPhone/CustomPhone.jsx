@@ -35,9 +35,13 @@ export default function CustomPhone({
   const [val, setVal] = React.useState(value);
 
   const handleChangeValue = (e) => {
-    console.log({ e });
     setVal(e.target.value);
-    onChange(e.target.value);
+  }
+
+  const deboundedOnChange = () => {
+    if (value !== val) {
+      onChange(val);
+    }
   }
 
   const sx = THEMES[theme];
@@ -56,6 +60,7 @@ export default function CustomPhone({
       }}
       variant="filled"
       sx={sx}
+      onBlur={deboundedOnChange}
     />
   );
 };

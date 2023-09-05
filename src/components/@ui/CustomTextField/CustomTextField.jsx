@@ -1,11 +1,11 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import { Typography, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 
-const VARIANTS = {
-  filled: {},
-  outlined: {
+const THEMES = {
+  base: {},
+  filled: {
     '& .MuiFilledInput-root': {
       backgroundColor: 'background.paper',
     },
@@ -16,7 +16,7 @@ export default function CustomTextField({
   label,
   value,
   onChange,
-  variant,
+  theme,
   required,
 }) {
   const [val, setVal] = React.useState(value);
@@ -26,7 +26,7 @@ export default function CustomTextField({
     onChange(e.currentTarget.value);
   }
 
-  const sx = VARIANTS[variant];
+  const sx = THEMES[theme];
 
   return (
     <TextField
@@ -45,7 +45,7 @@ CustomTextField.propTypes = {
   label: PropTypes.string,
   value: PropTypes.any,
   onChange: PropTypes.func,
-  variant: PropTypes.oneOf(['filled', 'outlined', 'standard']).isRequired,
+  theme: PropTypes.oneOf(['base', 'filled']).isRequired,
   required: PropTypes.bool,
 };
 

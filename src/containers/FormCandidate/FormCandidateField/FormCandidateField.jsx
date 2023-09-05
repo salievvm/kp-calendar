@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FIELD_TYPES, TEXT_FIELD_VARIANTS } from '../../../consts';
+import { FIELD_TYPES, TEXT_FIELD_THEMES } from '../../../consts';
 import CustomTextField from '../../../components/@ui/CustomTextField';
 import CustomSwitch from '../../../components/@ui/CustomSwitch';
 
@@ -33,7 +33,7 @@ const DisplayField = ({
   } = field;
 
   const fieldTheme = React.useContext(SectionThemeContext);
-  const textFieldVariant = TEXT_FIELD_VARIANTS[fieldTheme];
+  const textFieldTheme = TEXT_FIELD_THEMES[fieldTheme];
 
   switch (type) {
     case radio:
@@ -50,7 +50,7 @@ const DisplayField = ({
         label={title}
         value={value}
         onChange={onChange}
-        variant={textFieldVariant}
+        theme={textFieldTheme}
       />
   }
 }

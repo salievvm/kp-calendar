@@ -12,14 +12,14 @@ const {
 export const SectionThemeContext = React.createContext(base);
 
 const SectionProvider = ({
-  type,
+  theme,
   children,
 }) => {
 
   return (
-    <SectionThemeContext.Provider value={type}>
-      {type === filled ? (
-        <CustomCard padding={24} variant={type}>
+    <SectionThemeContext.Provider value={theme}>
+      {theme === filled ? (
+        <CustomCard padding={24} variant={theme}>
           {children}
         </CustomCard>
       ) : children}
@@ -28,7 +28,7 @@ const SectionProvider = ({
 };
 
 SectionProvider.propTypes = {
-  type: PropTypes.oneOf(Object.keys(SECTION_TYPES)).isRequired,
+  theme: PropTypes.oneOf(Object.keys(SECTION_TYPES)).isRequired,
   children: PropTypes.any.isRequired,
 };
 

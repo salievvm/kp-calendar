@@ -16,7 +16,7 @@ const FormCandidateSection = ({
   return (
     <React.Fragment>
       <Typography variant="h2">{schema[sectionCode].section}</Typography>
-      <SectionProvider type={sectionType}>
+      <SectionProvider theme={sectionType}>
         <Grid container spacing={2}>
           {Object.keys(schema[sectionCode].items).map((fieldCode) => {
             const field = schema[sectionCode].items[fieldCode];
@@ -39,8 +39,6 @@ const FormCandidateSection = ({
 export default FormCandidateSection;
 
 const sectionTypes = Object.keys(SECTION_TYPES);
-
-console.log({ sectionTypes });
 
 FormCandidateSection.propTypes = {
   sectionType: PropTypes.oneOf(sectionTypes).isRequired,

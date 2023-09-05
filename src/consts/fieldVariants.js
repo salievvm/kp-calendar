@@ -5,11 +5,11 @@ const {
   filled,
 } = SECTION_TYPES;
 
-const TEXT_FIELD_VARIANTS = {
-  [base]: 'filled',
-  [filled]: 'outlined',
+const TEXT_FIELD_THEMES = {
+  [base]: base,
+  [filled]: filled,
 };
 
 export {
-  TEXT_FIELD_VARIANTS,
+  TEXT_FIELD_THEMES,
 };

@@ -11,6 +11,7 @@ const {
   phone,
   email,
   date,
+  dateMulti,
   list,
 } = FIELD_TYPES;
 
@@ -133,7 +134,7 @@ const schema = {
       dateOfIssue: {
         title: 'Дата выдачи',
         code: '',
-        type: text,
+        type: date,
         col: 6,
         required: true,
       },

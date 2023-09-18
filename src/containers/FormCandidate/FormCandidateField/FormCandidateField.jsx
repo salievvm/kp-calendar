@@ -6,6 +6,8 @@ import {
   CustomTextField,
   CustomSwitch,
   CustomPhone,
+  CustomDateRange,
+  CustomDate,
 } from '../../../components/@ui/CustomFields';
 
 import useApp from '../hooks/useApp';
@@ -20,6 +22,7 @@ const {
   phone,
   email,
   date,
+  dateMulti,
 } = FIELD_TYPES;
 
 const DisplayField = ({
@@ -53,6 +56,22 @@ const DisplayField = ({
         value={value}
         onChange={onChange}
         theme={textFieldTheme}
+      />
+    case date:
+      return <CustomDate
+        required
+        label={title}
+        theme={textFieldTheme}
+        onChange={onChange}
+        value={value}
+      />
+    case dateMulti:
+      return <CustomDateRange
+        required
+        label={title}
+        theme={textFieldTheme}
+        onChange={onChange}
+        value={value}
       />
 
     default:

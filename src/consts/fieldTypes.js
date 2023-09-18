@@ -6,6 +6,7 @@ const FIELD_TYPES = {
   phone: 'phone',
   email: 'email',
   date: 'date',
+  dateMulti: 'dateMulti',
   list: 'list',
 };
 

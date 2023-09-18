@@ -2,10 +2,10 @@
 
 .kp-datepicker{
     position: absolute;
-    top: 62px;
-    left: 0;
+    // top: 62px;
+    left: 10%;
     z-index: 100;
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
     &>div{

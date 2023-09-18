@@ -43,8 +43,6 @@ const KPDatePicker = ({
 		}
 	}
 
-
-
 	const renderDayContents = (day, date) => {
 		return (
 			<>

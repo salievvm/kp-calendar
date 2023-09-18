@@ -18,6 +18,7 @@ export default function CustomTextField({
   onChange,
   theme,
   required,
+  onClick,
 }) {
   const [val, setVal] = React.useState(value);
 
@@ -30,6 +31,10 @@ export default function CustomTextField({
       onChange(val);
     }
   }
+
+  React.useEffect(() => {
+    setVal(value);
+  }, [value])
 
   // React.useEffect(() => {
   //   const delayDebounceFn = setTimeout(() => {
@@ -51,6 +56,7 @@ export default function CustomTextField({
       sx={sx}
       type="email"
       onBlur={deboundedOnChange}
+      onClick={onClick}
     />
   );
 };
@@ -61,6 +67,7 @@ CustomTextField.propTypes = {
   onChange: PropTypes.func,
   theme: PropTypes.oneOf(['base', 'filled']).isRequired,
   required: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 CustomTextField.defaultProps = {
@@ -68,4 +75,5 @@ CustomTextField.defaultProps = {
   value: '',
   required: false,
   onChange: () => { },
+  onClick: () => { },
 };

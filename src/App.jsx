@@ -13,7 +13,6 @@ function App() {
 	return (
 		<ThemeProvider>
 			<Container maxWidth="md">
-				{/* <DatePicker /> */}
 				<FormCandidate />
 				<AppLoading />
 			</Container>

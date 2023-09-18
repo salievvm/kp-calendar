@@ -8,6 +8,7 @@ import { CustomAlertInfo } from '../../components/@ui/CustomAlert';
 
 import CustomPageHeader from '../../components/@ui/CustomPageHeader/CustomPageHeader';
 import FormCandidateSectionList from './FormCandidateSectionList';
+import CustomDateRange from '../../components/@ui/CustomFields/CustomDateRange';
 
 const FormCandidate = () => {
   const {
@@ -26,6 +27,7 @@ const FormCandidate = () => {
         subtitle={subtitle}
       />
       <CustomCard>
+        <CustomDateRange />
         <CustomAlertInfo
           title={alertTitle}
           subtitle={alertSubtitle}

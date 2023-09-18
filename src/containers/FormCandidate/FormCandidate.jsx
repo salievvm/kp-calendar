@@ -9,6 +9,7 @@ import { CustomAlertInfo } from '../../components/@ui/CustomAlert';
 import CustomPageHeader from '../../components/@ui/CustomPageHeader/CustomPageHeader';
 import FormCandidateSectionList from './FormCandidateSectionList';
 import CustomDateRange from '../../components/@ui/CustomFields/CustomDateRange';
+import CustomDate from '../../components/@ui/CustomFields/CustomDate';
 
 const FormCandidate = () => {
   const {
@@ -27,7 +28,18 @@ const FormCandidate = () => {
         subtitle={subtitle}
       />
       <CustomCard>
-        <CustomDateRange />
+        <CustomDateRange
+          required
+          label="Период работы"
+          theme="base"
+          // value={["28.08.2023", "30.08.2023"]}
+        />
+        <CustomDate
+          required
+          label="Дата выдачи"
+          theme="base"
+          // value="28.08.2023"
+        />
         <CustomAlertInfo
           title={alertTitle}
           subtitle={alertSubtitle}

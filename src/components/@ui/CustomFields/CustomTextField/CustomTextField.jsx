@@ -19,6 +19,7 @@ export default function CustomTextField({
   theme,
   required,
   onClick,
+  autoComplete,
 }) {
   const [val, setVal] = React.useState(value);
 
@@ -57,6 +58,7 @@ export default function CustomTextField({
       type="email"
       onBlur={deboundedOnChange}
       onClick={onClick}
+      autoComplete={autoComplete ? 'on' : 'off'}
     />
   );
 };
@@ -68,12 +70,14 @@ CustomTextField.propTypes = {
   theme: PropTypes.oneOf(['base', 'filled']).isRequired,
   required: PropTypes.bool,
   onClick: PropTypes.func,
+  autoComplete: PropTypes.bool,
 };
 
 CustomTextField.defaultProps = {
   label: '',
   value: '',
   required: false,
+  autoComplete: true,
   onChange: () => { },
   onClick: () => { },
 };

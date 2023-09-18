@@ -3,6 +3,7 @@ import CustomTextField from "./CustomTextField";
 import CustomPhone from "./CustomPhone";
 import CustomDateRange from "./CustomDateRange";
 import CustomDate from "./CustomDate";
+import CustomRadioGroup from "./CustomRadioGroup";
 
 export {
   CustomSwitch,
@@ -10,4 +11,5 @@ export {
   CustomPhone,
   CustomDateRange,
   CustomDate,
+  CustomRadioGroup,
 };

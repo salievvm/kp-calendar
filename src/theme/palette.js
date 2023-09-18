@@ -1,4 +1,4 @@
-import { BODY_COLOR, CONTRAST_TEXT_LIGHT, MAIN_TEXT, PRIMARY } from "./colors";
+import { BODY_COLOR, CONTRAST_TEXT_LIGHT, MAIN_TEXT, PRIMARY, RADIO_GROUP_DEFAULT } from "./colors";
 
 const palette = {
   primary: {
@@ -9,7 +9,7 @@ const palette = {
   },
   info: {
     main: BODY_COLOR,
-    light: BODY_COLOR,
+    light: RADIO_GROUP_DEFAULT,
     dark: BODY_COLOR,
     contrastText: MAIN_TEXT,
   },

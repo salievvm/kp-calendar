@@ -11,10 +11,17 @@ import palette from './palette';
 import typography from './typography';
 
 import componentsOverride from './overrides';
+import { BORDER_RADIUS_MD, BORDER_RADIUS_SM } from './const';
+
+const shape = {
+  borderRadiusSm: BORDER_RADIUS_SM / 8,
+  borderRadius: BORDER_RADIUS_MD / 8,
+}
 
 const options = createTheme({
   palette,
   typography,
+  shape,
 });
 
 const ThemeProvider = ({ children }) => {

@@ -9,3 +9,4 @@ export const SECOND_TEXT = '#9F9F9F';
 
 /*** Bg */
 export const BODY_COLOR = '#F5F5F5';
+export const RADIO_GROUP_DEFAULT = '#ECECEC';

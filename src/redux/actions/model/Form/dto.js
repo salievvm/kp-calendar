@@ -12,6 +12,7 @@ const {
   email,
   date,
   dateMulti,
+  file,
   list,
 } = FIELD_TYPES;
 
@@ -259,6 +260,24 @@ const schema = {
         title: 'Контактный телефон',
         code: '',
         type: phone,
+        col: 12,
+        required: true,
+      },
+    },
+  },
+  documents: {
+    section: 'Документы',
+    type: base,
+    subtitle: '',
+    info: '',
+    repeatable: false,
+    repeatCountDefault: 0,
+    canAdd: false,
+    items: {
+      documents: {
+        title: '',
+        code: '',
+        type: file,
         col: 12,
         required: true,
       },

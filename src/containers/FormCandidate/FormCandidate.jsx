@@ -27,7 +27,6 @@ const FormCandidate = () => {
         subtitle={subtitle}
       />
       <CustomCard>
-        <CustomFileLoader />
         <CustomAlertInfo
           title={alertTitle}
           subtitle={alertSubtitle}

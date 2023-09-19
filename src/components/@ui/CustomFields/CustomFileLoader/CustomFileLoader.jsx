@@ -38,7 +38,6 @@ const FileDocPreview = ({ file }) => {
   const SLICE_ON = 24;
 
   const displayLabel = React.useMemo(() => {
-    console.log({ label });
     return label && label.length > SLICE_ON ? (
       `${label.slice(0, SLICE_ON / 2)}...${label.slice((label.length - SLICE_ON / 2), label.length)}`
     ) : label;
@@ -135,7 +134,7 @@ function CustomFileLoader({
   onChange,
   defaultValues,
 }) {
-  const [files, setFiles] = useState(null);
+  const [files, setFiles] = useState([]);
   const [values, setValues] = useState([]);
   const [hasChanged, setHasChanged] = React.useState(false);
 
@@ -179,16 +178,12 @@ function CustomFileLoader({
   }
 
   React.useEffect(() => {
-    if (hasChanged && files) {
+    if (hasChanged && files && files.length) {
       files.map((item, index) => encodeFile(item, index));
+    } else if (files.length !== values.length) {
+      setValues([]);
     }
   }, [files, hasChanged]);
-
-  React.useEffect(() => {
-    if (onChange && hasChanged && values !== defaultValues) {
-      onChange(values);
-    }
-  }, [onChange, values, hasChanged, defaultValues]);
 
   return (
     <>

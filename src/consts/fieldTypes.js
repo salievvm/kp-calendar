@@ -8,6 +8,7 @@ const FIELD_TYPES = {
   date: 'date',
   dateMulti: 'dateMulti',
   list: 'list',
+  file: 'file',
 };
 
 export default FIELD_TYPES;

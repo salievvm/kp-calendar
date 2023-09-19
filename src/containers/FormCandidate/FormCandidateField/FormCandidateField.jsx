@@ -9,6 +9,7 @@ import {
   CustomDateRange,
   CustomDate,
   CustomRadioGroup,
+  CustomFileLoader,
 } from '../../../components/@ui/CustomFields';
 
 import useApp from '../hooks/useApp';
@@ -24,6 +25,7 @@ const {
   email,
   date,
   dateMulti,
+  file,
 } = FIELD_TYPES;
 
 const DisplayField = ({
@@ -90,6 +92,14 @@ const DisplayField = ({
         onChange={onChange}
         theme={textFieldTheme}
         multiline
+      />
+    case file:
+      return <CustomFileLoader
+        required={required}
+        label={title}
+        value={value}
+        onChange={onChange}
+        theme={textFieldTheme}
       />
 
     default:

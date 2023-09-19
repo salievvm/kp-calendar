@@ -1,8 +1,8 @@
 import DatePicker from "react-datepicker";
 import React, { useEffect, useRef } from 'react';
 import './index.scss';
-import { ReactComponent as ArrowLeft } from '../img/ChevronLeft.svg';
-import { ReactComponent as ArrowRight } from '../img/ChevronRight.svg';
+import { ReactComponent as ArrowLeft } from '../../assets/img/ChevronLeft.svg';
+import { ReactComponent as ArrowRight } from '../../assets/img/ChevronRight.svg';
 
 const KPDatePicker = ({
 	close,
@@ -42,8 +42,6 @@ const KPDatePicker = ({
 			}
 		}
 	}
-
-
 
 	const renderDayContents = (day, date) => {
 		return (

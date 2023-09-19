@@ -173,10 +173,8 @@ function CustomFileLoader({
 
   const handleRemoveFile = async (index) => {
     console.log({ index });
-    let newFiles = [];
-    const find = files.find((item, i) => i === index);
-    if (find) newFiles = files.filter((item, i) => i !== index);
-    else newFiles = files.concat(index);
+    let newFiles = files;
+    newFiles.splice(index, 1);
 
     setFiles(newFiles);
     const encodedFiles = await encodeFilesToBase64(newFiles);

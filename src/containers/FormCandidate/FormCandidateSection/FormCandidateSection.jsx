@@ -21,7 +21,7 @@ const FormCandidateSection = ({
   } = useApp();
 
   const {
-    section,
+    title,
     info,
     subtitle,
     sections,
@@ -32,9 +32,9 @@ const FormCandidateSection = ({
 
   return (
     <React.Fragment>
-      {section ? (
+      {title ? (
         <Grid item xs={12}>
-          <Typography variant={repeatable ? 'h3' : 'h2'}>{section}</Typography>
+          <Typography variant={repeatable ? 'h3' : 'h2'}>{title}</Typography>
         </Grid>
       ) : null}
       {info ? (
@@ -44,14 +44,21 @@ const FormCandidateSection = ({
       ) : null}
       <SectionProvider theme={sectionType}>
         <Grid container gap={2}>
-          {Object.keys(sections).map((subsectionCode) => {
-            const { items } = sections[subsectionCode];
+          {Object.keys(sections).map((subsectionCode, index) => {
+            const { items, title: subSectionTitle } = sections[subsectionCode];
+
             return <Grid key={subsectionCode} container spacing={2}>
-              {subtitle ? (
+              {repeatable && subSectionTitle && index === 0 ? (
                 <Grid item xs={12}>
-                  <Typography variant="h3">{subtitle}</Typography>
+                  <Typography variant="h3">{subSectionTitle}</Typography>
                 </Grid>
-              ) : null}
+              ) : (
+                subtitle ? (
+                  <Grid item xs={12}>
+                    <Typography variant="h3">{subtitle}</Typography>
+                  </Grid>
+                ) : null
+              )}
               {Object.keys(items).map((fieldCode) => {
                 const field = items[fieldCode];
                 return (

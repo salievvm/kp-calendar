@@ -23,7 +23,7 @@ const {
 
 const schema = {
   main: {
-    section: 'Основная информация',
+    title: 'Основная информация',
     sections: {
       0: {
         items: {
@@ -51,7 +51,7 @@ const schema = {
     },
   },
   personal: {
-    section: 'Личные данные',
+    title: 'Личные данные',
     sections: {
       0: {
         items: {
@@ -115,7 +115,7 @@ const schema = {
     },
   },
   passport: {
-    section: 'Паспортные данные',
+    title: 'Паспортные данные',
     type: filled,
     subtitle: 'Заполните данные как в паспорте',
     sections: {
@@ -161,7 +161,7 @@ const schema = {
     },
   },
   additional: {
-    section: 'Дополнительная информация',
+    title: 'Дополнительная информация',
     type: base,
     subtitle: 'Образование',
     sections: {
@@ -193,7 +193,7 @@ const schema = {
     },
   },
   carLicense: {
-    section: '',
+    title: '',
     type: base,
     subtitle: 'Наличие водительских прав категории',
     sections: {
@@ -218,7 +218,7 @@ const schema = {
     },
   },
   lawViolation: {
-    section: '',
+    title: '',
     type: base,
     subtitle: 'Привлекались ли Вы к административной/уголовной ответственности',
     sections: {
@@ -244,7 +244,7 @@ const schema = {
     },
   },
   sourceRecognition: {
-    section: '',
+    title: '',
     type: base,
     subtitle: 'Откуда узнали о вакансии',
     sections: {
@@ -262,15 +262,15 @@ const schema = {
     },
   },
   family: {
-    section: 'Родственники',
+    title: 'Родственники',
     type: filled,
-    subtitle: 'Контактное лицо',
+    subtitle: 'Контактное лицо №2',
     info: 'В случае отсутствия родственников, укажите контактные лица для связи',
     repeatable: true,
     canAdd: false,
     sections: {
       0: {
-        section: 'Контактное лицо №1',
+        title: 'Контактное лицо №1',
         items: {
           dateBirth: {
             title: 'Степень родства',
@@ -296,7 +296,7 @@ const schema = {
         },
       },
       1: {
-        section: 'Контактное лицо №2',
+        title: 'Контактное лицо №2',
         items: {
           dateBirth: {
             title: 'Степень родства',
@@ -324,7 +324,7 @@ const schema = {
     },
   },
   experience: {
-    section: 'Профессиональный опыт',
+    title: 'Профессиональный опыт',
     type: filled,
     subtitle: 'Место работы',
     info: 'Необходимо заполнить в случае отсутствия резюме',
@@ -333,7 +333,7 @@ const schema = {
     addButtonLabel: 'Добавить место работы',
     sections: {
       0: {
-        section: 'Последнее место работы',
+        title: 'Последнее место работы',
         items: {
           periodOfWork: {
             title: 'Период работы',
@@ -368,7 +368,7 @@ const schema = {
     },
   },
   recommendation: {
-    section: 'Рекомендации',
+    title: 'Рекомендации',
     type: filled,
     subtitle: 'Контактное лицо',
     info: 'Укажите контактное лицо, кто сможет дать о вас рекомендаии',
@@ -377,7 +377,7 @@ const schema = {
     addButtonLabel: 'Добавить рекомендацию',
     sections: {
       0: {
-        section: 'Контактное лицо',
+        title: 'Контактное лицо',
         items: {
           contactFio: {
             title: 'ФИО',
@@ -405,7 +405,7 @@ const schema = {
     },
   },
   documents: {
-    section: 'Документы',
+    title: 'Документы',
     type: base,
     subtitle: '',
     info: '',

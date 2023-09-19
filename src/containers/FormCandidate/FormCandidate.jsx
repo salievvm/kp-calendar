@@ -17,7 +17,6 @@ const FormCandidate = () => {
     subtitle,
     alertTitle,
     alertSubtitle,
-    handleMakeLoading,
   } = useApp();
 
   return (
@@ -37,9 +36,6 @@ const FormCandidate = () => {
       </CustomCard>
       <CustomCard margin={'24px 0 24px 0'}>
         <CustomTypography />
-        <Button
-          onClick={handleMakeLoading}
-        >Сделать загрузку</Button>
       </CustomCard>
 
     </Grid>

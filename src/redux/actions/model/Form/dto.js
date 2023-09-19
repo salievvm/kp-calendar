@@ -330,6 +330,7 @@ const schema = {
     info: 'Необходимо заполнить в случае отсутствия резюме',
     repeatable: true,
     canAdd: true,
+    addButtonLabel: 'Добавить место работы',
     sections: {
       0: {
         section: 'Последнее место работы',
@@ -373,6 +374,7 @@ const schema = {
     info: 'Укажите контактное лицо, кто сможет дать о вас рекомендаии',
     repeatable: true,
     canAdd: true,
+    addButtonLabel: 'Добавить рекомендацию',
     sections: {
       0: {
         section: 'Контактное лицо',

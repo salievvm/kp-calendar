@@ -28,6 +28,7 @@ const FormCandidateSectionList = ({
         )
       }) : null}
       <Button
+        size='large'
         variant="contained"
         onClick={handleSendForm}
       >Отправить анкету</Button>

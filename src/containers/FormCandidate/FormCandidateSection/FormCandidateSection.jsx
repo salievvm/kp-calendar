@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 
 import { SECTION_TYPES } from '../../../consts';
 
@@ -19,13 +19,12 @@ const FormCandidateSection = ({
     section,
     info,
     subtitle,
-    // items,
     sections,
     repeatable,
-    repeatCountDefault,
+    canAdd,
+    addButtonLabel,
   } = schema[sectionCode];
 
-  // const countOfSubSections = repeatable && repeatCountDefault ? Array(repeatCountDefault).fill(0) : [0];
   return (
     <React.Fragment>
       {section ? (
@@ -63,6 +62,12 @@ const FormCandidateSection = ({
               })}
             </Grid>
           })}
+          {canAdd ? <Button
+            variant='contained'
+            color='button'
+            size='large'
+            fullWidth
+          >{addButtonLabel}</Button> : null}
         </Grid>
       </SectionProvider>
     </React.Fragment>

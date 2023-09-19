@@ -26,6 +26,7 @@ const useApp = () => {
 
   const handleSendForm = () => {
     obForm.send();
+    handleMakeLoading();
   }
 
   const title = 'Анкета кандидата';

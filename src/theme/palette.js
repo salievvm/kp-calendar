@@ -13,6 +13,9 @@ const palette = {
     dark: BODY_COLOR,
     contrastText: MAIN_TEXT,
   },
+  button: {
+    main: RADIO_GROUP_DEFAULT,
+  },
 };
 
 export default palette;

@@ -29,6 +29,10 @@ const useApp = () => {
     handleMakeLoading();
   }
 
+  const handleAddSubSection = (section) => {
+    obForm.addSubSection(section);
+  }
+
   const title = 'Анкета кандидата';
   const subtitle = 'Заполните, пожалуйста, анкету, отвечая на все вопросы полно и не оставляя пустых строчек';
 
@@ -45,6 +49,7 @@ const useApp = () => {
     handleMakeLoading,
     handleFieldChange,
     handleSendForm,
+    handleAddSubSection,
   }
 };
 

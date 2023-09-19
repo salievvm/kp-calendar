@@ -9,12 +9,17 @@ import FormCandidateField from '../FormCandidateField';
 import SectionProvider from './SectionProvider';
 import { InfoIcon } from '../../../assets/icons';
 import { CustomInformer } from '../../../components/@ui/CustomTypography';
+import useApp from '../hooks/useApp';
 
 const FormCandidateSection = ({
   sectionType,
   sectionCode,
   schema,
 }) => {
+  const {
+    handleAddSubSection,
+  } = useApp();
+
   const {
     section,
     info,
@@ -66,6 +71,7 @@ const FormCandidateSection = ({
             variant='contained'
             color='button'
             size='large'
+            onClick={() => handleAddSubSection(sectionCode)}
             fullWidth
           >{addButtonLabel}</Button> : null}
         </Grid>

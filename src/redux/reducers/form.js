@@ -45,7 +45,7 @@ function reducer(state = initState, action) {
       const lastKey = keys[keys.length - 1];
       const lastSection = _.cloneDeep(state.schema[section].sections[lastKey]);
 
-      for (const [fieldCode, field] of Object.entries(lastSection.items)) {
+      for (const fieldCode of Object.keys(lastSection.items)) {
         delete lastSection.items[fieldCode].value;
       }
 

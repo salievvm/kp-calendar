@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { fromDateToStr, fromStrToDate, useWindowSize } from './hooks';
 import KPDatePicker from "../../../KPDatePicker";
 import CustomTextField from '../CustomTextField';
+import { CalendarIcon } from '../../../../assets/icons';
 
 const CustomDate = ({
 	label,
@@ -39,6 +40,7 @@ const CustomDate = ({
 				onClick={toggleRangeDatePicker}
 				value={dateIn}
 				autoComplete={false}
+				icon={<CalendarIcon />}
 			/>
 			{rangeDatePickerOpen && <KPDatePicker
 				setDates={setDatesRange}

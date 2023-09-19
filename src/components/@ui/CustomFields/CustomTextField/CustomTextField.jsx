@@ -1,13 +1,16 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import { TextField } from '@mui/material';
+import { IconButton, InputAdornment, TextField } from '@mui/material';
 
 export const THEMES = {
   base: {},
   filled: {
     '& .MuiFilledInput-root': {
       backgroundColor: 'background.paper',
+      '&:hover': {
+        backgroundColor: 'background.paper',
+      },
       '&.Mui-focused': {
         backgroundColor: 'background.paper',
       },
@@ -24,6 +27,7 @@ export default function CustomTextField({
   onClick,
   autoComplete,
   multiline,
+  icon,
 }) {
   const [val, setVal] = React.useState(value);
 
@@ -65,6 +69,18 @@ export default function CustomTextField({
       autoComplete={autoComplete ? 'on' : 'off'}
       multiline={multiline}
       rows={multiline ? 3 : 1}
+      InputProps={{
+        endAdornment: icon ? (
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="calendar"
+              edge="end"
+            >
+              {icon}
+            </IconButton>
+          </InputAdornment>
+        ) : null
+      }}
     />
   );
 };
@@ -78,6 +94,7 @@ CustomTextField.propTypes = {
   onClick: PropTypes.func,
   autoComplete: PropTypes.bool,
   multiline: PropTypes.bool,
+  icon: PropTypes.element,
 };
 
 CustomTextField.defaultProps = {
@@ -88,4 +105,5 @@ CustomTextField.defaultProps = {
   multiline: false,
   onChange: () => { },
   onClick: () => { },
+  icon: null,
 };

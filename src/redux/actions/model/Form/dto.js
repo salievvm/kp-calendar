@@ -321,8 +321,86 @@ const schema = {
           },
         },
       },
-    }
-
+    },
+  },
+  experience: {
+    section: 'Профессиональный опыт',
+    type: filled,
+    subtitle: 'Место работы',
+    info: 'Необходимо заполнить в случае отсутствия резюме',
+    repeatable: true,
+    canAdd: true,
+    sections: {
+      0: {
+        section: 'Последнее место работы',
+        items: {
+          periodOfWork: {
+            title: 'Период работы',
+            code: '',
+            type: dateMulti,
+            col: 12,
+            required: false,
+          },
+          companyName: {
+            title: 'Наименование организации',
+            code: '',
+            type: text,
+            col: 12,
+            required: false,
+          },
+          positionAtWork: {
+            title: 'Занимаемая должность',
+            code: '',
+            type: text,
+            col: 12,
+            required: false,
+          },
+          reasonForDismissal: {
+            title: 'Причина увольнения',
+            code: '',
+            type: text,
+            col: 12,
+            required: false,
+          },
+        },
+      },
+    },
+  },
+  recommendation: {
+    section: 'Рекомендации',
+    type: filled,
+    subtitle: 'Контактное лицо',
+    info: 'Укажите контактное лицо, кто сможет дать о вас рекомендаии',
+    repeatable: true,
+    canAdd: true,
+    sections: {
+      0: {
+        section: 'Контактное лицо',
+        items: {
+          contactFio: {
+            title: 'ФИО',
+            code: '',
+            type: text,
+            col: 12,
+            required: false,
+          },
+          positionAtWork: {
+            title: 'Занимаемая должность',
+            code: '',
+            type: text,
+            col: 12,
+            required: false,
+          },
+          reasonForDismissal: {
+            title: 'Причина увольнения',
+            code: '',
+            type: text,
+            col: 12,
+            required: false,
+          },
+        },
+      },
+    },
   },
   documents: {
     section: 'Документы',

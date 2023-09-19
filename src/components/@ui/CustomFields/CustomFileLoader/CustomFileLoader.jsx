@@ -136,8 +136,6 @@ function CustomFileLoader({
 }) {
   const [files, setFiles] = useState([]);
 
-  console.log({ files });
-
   async function encodeFilesToBase64(fileList) {
     const promises = [];
     
@@ -172,7 +170,6 @@ function CustomFileLoader({
   };
 
   const handleRemoveFile = async (index) => {
-    console.log({ index });
     let newFiles = files;
     newFiles.splice(index, 1);
 

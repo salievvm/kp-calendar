@@ -20,12 +20,16 @@ const FormCandidateSection = ({
     info,
     subtitle,
     items,
+    repeatable,
+    repeatCountDefault,
   } = schema[sectionCode];
+
+  const countOfSubSections = repeatable && repeatCountDefault ? Array(repeatCountDefault).fill(0) : [0];
   return (
     <React.Fragment>
       {section ? (
         <Grid item xs={12}>
-          <Typography variant="h2">{section}</Typography>
+          <Typography variant={repeatable ? 'h3' : 'h2'}>{section}</Typography>
         </Grid>
       ) : null}
       {info ? (
@@ -34,24 +38,28 @@ const FormCandidateSection = ({
         </Grid>
       ) : null}
       <SectionProvider theme={sectionType}>
-        <Grid container spacing={2}>
-          {subtitle ? (
-            <Grid item xs={12}>
-              <Typography variant="h3">{subtitle}</Typography>
+        <Grid container gap={2}>
+          {countOfSubSections.map((item, index) => (
+            <Grid key={index} container spacing={2}>
+              {subtitle ? (
+                <Grid item xs={12}>
+                  <Typography variant="h3">{subtitle}</Typography>
+                </Grid>
+              ) : null}
+              {Object.keys(items).map((fieldCode) => {
+                const field = items[fieldCode];
+                return (
+                  <Grid item xs={field.col} key={fieldCode}>
+                    <FormCandidateField
+                      field={field}
+                      fieldCode={fieldCode}
+                      sectionCode={sectionCode}
+                    />
+                  </Grid>
+                )
+              })}
             </Grid>
-          ) : null}
-          {Object.keys(items).map((fieldCode) => {
-            const field = items[fieldCode];
-            return (
-              <Grid item xs={field.col} key={fieldCode}>
-                <FormCandidateField
-                  field={field}
-                  fieldCode={fieldCode}
-                  sectionCode={sectionCode}
-                />
-              </Grid>
-            )
-          })}
+          ))}
         </Grid>
       </SectionProvider>
     </React.Fragment>

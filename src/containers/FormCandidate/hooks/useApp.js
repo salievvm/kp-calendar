@@ -33,6 +33,14 @@ const useApp = () => {
     obForm.addSubSection(section);
   }
 
+  const handleRemoveSubSection = (section) => {
+    obForm.removeSubSection(section);
+  }
+
+  const handleEraseSubSection = (section) => {
+    obForm.eraseSubSection(section);
+  }
+
   const title = 'Анкета кандидата';
   const subtitle = 'Заполните, пожалуйста, анкету, отвечая на все вопросы полно и не оставляя пустых строчек';
 
@@ -50,6 +58,8 @@ const useApp = () => {
     handleFieldChange,
     handleSendForm,
     handleAddSubSection,
+    handleRemoveSubSection,
+    handleEraseSubSection,
   }
 };
 

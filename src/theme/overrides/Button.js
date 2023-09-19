@@ -12,6 +12,13 @@ export default function Button(theme) {
             boxShadow: 'none',
           }, 
         },
+        textSizeSmall: {
+          textTransform: 'inherit',
+          fontSize: theme.typography.caption.fontSize,
+          fontWeight: theme.typography.caption.fontWeight,
+          lineHeight: theme.typography.caption.lineHeight,
+          color: theme.typography.caption.color,
+        },
         containedSizeLarge: {
           padding: '8px 24px',
           lineHeight: '40px',

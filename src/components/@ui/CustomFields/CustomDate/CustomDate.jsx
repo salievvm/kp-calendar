@@ -31,6 +31,10 @@ const CustomDate = ({
 
 	const rangeMounthNumber = size.width < 768 ? 1 : 2;
 
+	React.useEffect(() => {
+    setDateIn(value);
+  }, [value]);
+
 	return (
 		<>
 			<CustomTextField

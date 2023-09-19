@@ -63,7 +63,7 @@ const DisplayField = ({
       />
     case date:
       return <CustomDate
-        required
+        required={required}
         label={title}
         theme={textFieldTheme}
         onChange={onChange}
@@ -71,7 +71,7 @@ const DisplayField = ({
       />
     case dateMulti:
       return <CustomDateRange
-        required
+        required={required}
         label={title}
         theme={textFieldTheme}
         onChange={onChange}

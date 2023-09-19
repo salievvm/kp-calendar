@@ -18,6 +18,8 @@ const FormCandidateSection = ({
 }) => {
   const {
     handleAddSubSection,
+    handleRemoveSubSection,
+    handleEraseSubSection,
   } = useApp();
 
   const {
@@ -49,14 +51,44 @@ const FormCandidateSection = ({
 
             return <Grid key={subsectionCode} container spacing={2}>
               {repeatable && subSectionTitle && index === 0 ? (
-                <Grid item xs={12}>
-                  <Typography variant="h3">{subSectionTitle}</Typography>
-                </Grid>
+                <>
+                  <Grid item xs={8}>
+                    <Typography variant="h3">{subSectionTitle}</Typography>
+                  </Grid>
+                  <Grid item xs={4} sx={{ textAlign: 'right' }}>
+                    <Button
+                      size="small"
+                      variant="text"
+                      color="button"
+                      onClick={() => handleEraseSubSection(sectionCode)}
+                    >
+                      Стереть
+                    </Button>
+                  </Grid>
+                </>
               ) : (
                 subtitle ? (
-                  <Grid item xs={12}>
-                    <Typography variant="h3">{subtitle}</Typography>
-                  </Grid>
+                  canAdd && repeatable && index === Object.keys(sections).length - 1 ? (
+                    <>
+                      <Grid item xs={8}>
+                        <Typography variant="h3">{subSectionTitle}</Typography>
+                      </Grid>
+                      <Grid item xs={4} sx={{ textAlign: 'right' }}>
+                        <Button
+                          size="small"
+                          variant="text"
+                          color="button"
+                          onClick={() => handleRemoveSubSection(sectionCode)}
+                        >
+                          Удалить
+                        </Button>
+                      </Grid>
+                    </>
+                  ) : (
+                    <Grid item xs={12}>
+                      <Typography variant="h3">{subtitle}</Typography>
+                    </Grid>
+                  )
                 ) : null
               )}
               {Object.keys(items).map((fieldCode) => {
@@ -75,9 +107,9 @@ const FormCandidateSection = ({
             </Grid>
           })}
           {canAdd ? <Button
-            variant='contained'
-            color='button'
-            size='large'
+            variant="contained"
+            color="button"
+            size="large"
             onClick={() => handleAddSubSection(sectionCode)}
             fullWidth
           >{addButtonLabel}</Button> : null}

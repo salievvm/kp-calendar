@@ -5,6 +5,8 @@ import store from "../../../store";
 import {
   SET_FIELD,
   ADD_SUBSECTION,
+  ERASE_SUBSECTION,
+  REMOVE_SUBSECTION,
 } from "../../../reducers/form";
 
 class Form {
@@ -18,6 +20,20 @@ class Form {
   addSubSection = (section) => {
     store.dispatch({
       type: ADD_SUBSECTION,
+      data: { section }
+    })
+  }
+
+  eraseSubSection = (section) => {
+    store.dispatch({
+      type: ERASE_SUBSECTION,
+      data: { section }
+    })
+  }
+  
+  removeSubSection = (section) => {
+    store.dispatch({
+      type: REMOVE_SUBSECTION,
       data: { section }
     })
   }

@@ -34,6 +34,11 @@ const CustomDateRange = ({
 		}
 	}
 
+	React.useEffect(() => {
+    setDateIn(value[0] || '');
+		setDateOut(value[1] || '')
+  }, [value]);
+
 	const rangeMounthNumber = size.width < 768 ? 1 : 2;
 
 	return (

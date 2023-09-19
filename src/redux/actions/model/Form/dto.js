@@ -173,6 +173,13 @@ const schema = {
             type: list,
             col: 12,
             required: false,
+            options: [
+              { id: 'student', label: 'студент', },
+              { id: 'middle', label: 'среднее общее', },
+              { id: 'middle-proffessional', label: 'среднее профессиональное', },
+              { id: 'high', label: 'высшее/бакалавр', },
+              { id: 'magistr', label: 'аспирантура/магистратура', },
+            ]
           },
           laguageKnowledge: {
             title: 'Знание языков',
@@ -187,6 +194,11 @@ const schema = {
             type: list,
             col: 6,
             required: false,
+            options: [
+              { id: 'native', label: 'свободно', },
+              { id: 'middle', label: 'средний уровень', },
+              { id: 'basic', label: 'базовые знания', },
+            ],
           },
         },
       },
@@ -256,6 +268,11 @@ const schema = {
             type: list,
             col: 12,
             required: false,
+            options: [
+              { id: 'invite', label: 'пригласил рекрутер', },
+              { id: 'recommendation', label: 'по рекомендации', },
+              { id: 'self', label: 'самостоятельно', },
+            ],
           },
         },
       },

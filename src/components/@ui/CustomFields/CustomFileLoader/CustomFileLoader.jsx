@@ -1,23 +1,35 @@
-import { Grid, Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import React, { useState } from "react";
+import { Badge, Grid, IconButton, Typography } from "@mui/material";
+import { Box, alpha, darken } from "@mui/system";
 import { FileUploader } from "react-drag-drop-files";
+import { CloseIcon } from "../../../../assets/icons";
 
 // const fileTypes = ["JPG", "PNG", "GIF"];
 
 const FilePreview = ({ file }) => {
   if (file.type.startsWith('image/')) {
-    return <Box sx={(theme) => ({
-      borderRadius: theme.shape.borderRadiusSm,
-      bgcolor: theme.palette.info.main,
-      backgroundImage: `url(${URL.createObjectURL(file)})`,
-      width: 96,
-      height: 96,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-    })}
-    />
+    return <Badge
+      badgeContent={<IconButton sx={(theme) => ({
+        bgcolor: theme.palette.primary.contrastText,
+        '&:hover': {
+          bgcolor: darken(theme.palette.primary.contrastText, 0.05),
+        },
+      })}>
+        <CloseIcon />
+      </IconButton>}
+    >
+      <Box sx={(theme) => ({
+        borderRadius: theme.shape.borderRadiusSm,
+        bgcolor: theme.palette.info.main,
+        backgroundImage: `url(${URL.createObjectURL(file)})`,
+        width: 96,
+        height: 96,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      })}
+      />
+    </Badge>
   } else if (file.type.startsWith('audio/')) {
     return <audio controls src={URL.createObjectURL(file)} />;
   } else if (file.type.startsWith('video/')) {

@@ -1,4 +1,9 @@
-import { BODY_COLOR, CONTRAST_TEXT_LIGHT, MAIN_TEXT, PRIMARY, RADIO_GROUP_DEFAULT, SECOND_TEXT } from "./colors";
+import { BODY_COLOR,
+  CONTRAST_TEXT_LIGHT,
+  MAIN_TEXT,
+  PRIMARY,
+  RADIO_GROUP_DEFAULT,
+} from "./colors";
 
 const palette = {
   primary: {

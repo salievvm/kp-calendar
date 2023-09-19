@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import { Button, Grid, Typography } from '@mui/material';
 
-import { SECTION_TYPES } from '../../../consts';
-
 import FormCandidateField from '../FormCandidateField';
 import SectionProvider from './SectionProvider';
-import { InfoIcon } from '../../../assets/icons';
 import { CustomInformer } from '../../../components/@ui/CustomTypography';
+
 import useApp from '../hooks/useApp';
+import { SECTION_TYPES } from '../../../consts';
+
 
 const FormCandidateSection = ({
   sectionType,

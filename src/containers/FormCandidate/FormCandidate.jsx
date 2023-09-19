@@ -1,14 +1,14 @@
 import React from 'react';
+import { Grid } from '@mui/material';
 
-import { Button, Grid, Typography } from '@mui/material';
-import useApp from './hooks/useApp';
+import FormCandidateSectionList from './FormCandidateSectionList';
 import CustomTypography from '../../components/@ui/CustomTypography';
 import CustomCard from '../../components/@ui/CustomCard';
 import { CustomAlertInfo } from '../../components/@ui/CustomAlert';
 
 import CustomPageHeader from '../../components/@ui/CustomPageHeader/CustomPageHeader';
-import FormCandidateSectionList from './FormCandidateSectionList';
-import { CustomFileLoader, CustomRadioGroup } from '../../components/@ui/CustomFields';
+
+import useApp from './hooks/useApp';
 
 const FormCandidate = () => {
   const {

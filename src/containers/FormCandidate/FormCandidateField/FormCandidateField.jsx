@@ -17,15 +17,16 @@ import useApp from '../hooks/useApp';
 import { SectionThemeContext } from '../FormCandidateSection/SectionProvider';
 
 const {
-  text,
   textarea,
   radio,
   radioGroup,
   phone,
-  email,
   date,
   dateMulti,
   file,
+  // text,
+  // email,
+  // list,
 } = FIELD_TYPES;
 
 const DisplayField = ({
@@ -35,9 +36,9 @@ const DisplayField = ({
   const {
     value,
     title,
-    code,
+    // code,
     type,
-    col,
+    // col,
     required,
     options,
   } = field;

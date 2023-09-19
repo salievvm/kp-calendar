@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Badge, Grid, IconButton, Typography } from "@mui/material";
-import { Box, alpha, darken } from "@mui/system";
+import { Box, darken } from "@mui/system";
 import { FileUploader } from "react-drag-drop-files";
 import { CloseIcon, DOCIcon, FileIcon, PDFIcon, XLSIcon } from "../../../../assets/icons";
 
@@ -98,13 +98,13 @@ const FilePreview = ({ file, index, onRemove }) => {
     )}
   </Badge>
   )
-  if (file.type.startsWith('image/')) {
-    return
-  } else if (file.type.startsWith('audio/')) {
-    return <audio controls src={URL.createObjectURL(file)} />;
-  } else if (file.type.startsWith('video/')) {
-    return <video controls src={URL.createObjectURL(file)} />;
-  }
+  // if (file.type.startsWith('image/')) {
+  //   return
+  // } else if (file.type.startsWith('audio/')) {
+  //   return <audio controls src={URL.createObjectURL(file)} />;
+  // } else if (file.type.startsWith('video/')) {
+  //   return <video controls src={URL.createObjectURL(file)} />;
+  // }
 };
 
 const FileDropArea = () => {

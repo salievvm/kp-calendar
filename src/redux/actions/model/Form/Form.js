@@ -7,10 +7,10 @@ import {
 } from "../../../reducers/form";
 
 class Form {
-  setField = (section, code, value) => {
+  setField = (section, subsection, code, value) => {
     store.dispatch({
       type: SET_FIELD,
-      data: { section, code, value, }
+      data: { section, subsection, code, value, }
     })
   }
 

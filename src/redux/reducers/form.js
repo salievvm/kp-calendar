@@ -11,20 +11,26 @@ const initState = {
 function reducer(state = initState, action) {
   switch (action.type) {
     case SET_FIELD:
-      const { section, code, value } = action.data;
+      const { section, subsection, code, value } = action.data;
       return {
         ...state,
         schema: {
           ...state.schema,
           [section]: {
             ...state.schema[section],
-            items: {
-              ...state.schema[section].items,
-              [code]: {
-                ...state.schema[section].items[code],
-                value,
+            sections: {
+              ...state.schema[section].sections,
+              [subsection]: {
+                ...state.schema[section].sections[subsection],
+                items: {
+                  ...state.schema[section].sections[subsection].items,
+                  [code]: {
+                    ...state.schema[section].sections[subsection].items[code],
+                    value,
+                  },
+                },
               },
-            }
+            },
           },
         }
       };

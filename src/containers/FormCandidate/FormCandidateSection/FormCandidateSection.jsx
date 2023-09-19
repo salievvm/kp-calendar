@@ -19,12 +19,13 @@ const FormCandidateSection = ({
     section,
     info,
     subtitle,
-    items,
+    // items,
+    sections,
     repeatable,
     repeatCountDefault,
   } = schema[sectionCode];
 
-  const countOfSubSections = repeatable && repeatCountDefault ? Array(repeatCountDefault).fill(0) : [0];
+  // const countOfSubSections = repeatable && repeatCountDefault ? Array(repeatCountDefault).fill(0) : [0];
   return (
     <React.Fragment>
       {section ? (
@@ -39,8 +40,9 @@ const FormCandidateSection = ({
       ) : null}
       <SectionProvider theme={sectionType}>
         <Grid container gap={2}>
-          {countOfSubSections.map((item, index) => (
-            <Grid key={index} container spacing={2}>
+          {Object.keys(sections).map((subsectionCode) => {
+            const { items } = sections[subsectionCode];
+            return <Grid key={subsectionCode} container spacing={2}>
               {subtitle ? (
                 <Grid item xs={12}>
                   <Typography variant="h3">{subtitle}</Typography>
@@ -54,12 +56,13 @@ const FormCandidateSection = ({
                       field={field}
                       fieldCode={fieldCode}
                       sectionCode={sectionCode}
+                      subsectionCode={subsectionCode}
                     />
                   </Grid>
                 )
               })}
             </Grid>
-          ))}
+          })}
         </Grid>
       </SectionProvider>
     </React.Fragment>

@@ -117,13 +117,14 @@ const FormCandidateField = ({
   field,
   fieldCode,
   sectionCode,
+  subsectionCode,
 }) => {
   const {
     handleFieldChange,
   } = useApp();
 
   const handleDisplayFieldChange = (value) => {
-    handleFieldChange(sectionCode, fieldCode, value)
+    handleFieldChange(sectionCode, subsectionCode, fieldCode, value)
   }
 
   return (
@@ -142,6 +143,9 @@ FormCandidateField.propTypes = {
     col: PropTypes.number,
     required: PropTypes.bool,
   }),
+  fieldCode: PropTypes.any.isRequired,
+  sectionCode: PropTypes.any.isRequired,
+  subsectionCode: PropTypes.any.isRequired,
 };
 DisplayField.propTypes = {
   field: PropTypes.shape({

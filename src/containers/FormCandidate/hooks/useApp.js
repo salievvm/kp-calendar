@@ -20,8 +20,8 @@ const useApp = () => {
     }, 2000)
   }
 
-  const handleFieldChange = (section, code, value) => {
-    obForm.setField(section, code, value);
+  const handleFieldChange = (section, subsection, code, value) => {
+    obForm.setField(section, subsection, code, value);
   }
 
   const handleSendForm = () => {

@@ -38,7 +38,7 @@ const CustomRadioItem = ({
 export default CustomRadioItem;
 
 CustomRadioItem.propTypes = {
-  checked: PropTypes.bool.isRequired,
+  checked: PropTypes.bool,
   children: PropTypes.any.isRequired,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onClick: PropTypes.func,

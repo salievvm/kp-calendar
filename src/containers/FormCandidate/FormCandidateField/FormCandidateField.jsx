@@ -80,6 +80,7 @@ const DisplayField = ({
         options={options}
         value={value}
         onChange={onChange}
+        multiselect
       />
 
     default:

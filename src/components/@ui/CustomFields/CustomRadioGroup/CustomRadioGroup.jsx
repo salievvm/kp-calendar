@@ -7,13 +7,30 @@ export default function CustomRadioGroup({
   options,
   value,
   onChange,
+  multiselect,
 }) {
-  const [state, setState] = React.useState(value);
+  const defaultValue = value || (multiselect ? [] : '');
+  const [state, setState] = React.useState(defaultValue);
+  const [hasChanged, setHasChanged] = React.useState(false);
 
   const handleCheck = (id) => {
-    setState(id);
-    onChange(id);
+    if (multiselect) {
+      setState((prev) => {
+        const find = prev.find((item) => item === id);
+        if (find) return prev.filter((item) => item !== find);
+        return prev.concat(id);
+      });
+    } else {
+      setState(id);
+    }
+    setHasChanged(true);
   };
+
+  React.useEffect(() => {
+    if (hasChanged && state !== value) {
+      onChange(state);
+    }
+  }, [onChange, state, hasChanged, value]);
 
   return (
     <Grid
@@ -31,7 +48,7 @@ export default function CustomRadioGroup({
         label,
         id,
       }) => {
-        const checked = state === id;
+        const checked = multiselect ? !!state.find((item) => item === id) : state === id;
         return <CustomRadioItem
           key={id}
           checked={checked}
@@ -49,10 +66,12 @@ CustomRadioGroup.propTypes = {
     label: PropTypes.string.isRequired,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   })),
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
   onChange: PropTypes.func,
+  multiselect: PropTypes.bool,
 };
 
 CustomRadioGroup.defaultProps = {
   onChange: () => { },
+  multiselect: false,
 };

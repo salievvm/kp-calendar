@@ -8,6 +8,9 @@ export const THEMES = {
   filled: {
     '& .MuiFilledInput-root': {
       backgroundColor: 'background.paper',
+      '&.Mui-focused': {
+        backgroundColor: 'background.paper',
+      },
     },
   },
 };
@@ -20,6 +23,7 @@ export default function CustomTextField({
   required,
   onClick,
   autoComplete,
+  multiline,
 }) {
   const [val, setVal] = React.useState(value);
 
@@ -59,6 +63,8 @@ export default function CustomTextField({
       onBlur={deboundedOnChange}
       onClick={onClick}
       autoComplete={autoComplete ? 'on' : 'off'}
+      multiline={multiline}
+      rows={multiline ? 3 : 1}
     />
   );
 };
@@ -71,6 +77,7 @@ CustomTextField.propTypes = {
   required: PropTypes.bool,
   onClick: PropTypes.func,
   autoComplete: PropTypes.bool,
+  multiline: PropTypes.bool,
 };
 
 CustomTextField.defaultProps = {
@@ -78,6 +85,7 @@ CustomTextField.defaultProps = {
   value: '',
   required: false,
   autoComplete: true,
+  multiline: false,
   onChange: () => { },
   onClick: () => { },
 };

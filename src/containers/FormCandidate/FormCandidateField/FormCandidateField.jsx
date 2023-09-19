@@ -82,6 +82,15 @@ const DisplayField = ({
         onChange={onChange}
         multiselect
       />
+    case textarea:
+      return <CustomTextField
+        required={required}
+        label={title}
+        value={value}
+        onChange={onChange}
+        theme={textFieldTheme}
+        multiline
+      />
 
     default:
       return <CustomTextField

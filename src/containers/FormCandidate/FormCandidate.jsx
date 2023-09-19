@@ -8,7 +8,7 @@ import { CustomAlertInfo } from '../../components/@ui/CustomAlert';
 
 import CustomPageHeader from '../../components/@ui/CustomPageHeader/CustomPageHeader';
 import FormCandidateSectionList from './FormCandidateSectionList';
-import { CustomRadioGroup } from '../../components/@ui/CustomFields';
+import { CustomFileLoader, CustomRadioGroup } from '../../components/@ui/CustomFields';
 
 const FormCandidate = () => {
   const {
@@ -27,6 +27,7 @@ const FormCandidate = () => {
         subtitle={subtitle}
       />
       <CustomCard>
+        <CustomFileLoader />
         <CustomAlertInfo
           title={alertTitle}
           subtitle={alertSubtitle}

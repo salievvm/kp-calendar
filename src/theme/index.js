@@ -14,8 +14,8 @@ import componentsOverride from './overrides';
 import { BORDER_RADIUS_MD, BORDER_RADIUS_SM } from './const';
 
 const shape = {
-  borderRadiusSm: BORDER_RADIUS_SM / 8,
-  borderRadius: BORDER_RADIUS_MD / 8,
+  borderRadiusSm: BORDER_RADIUS_SM / 4,
+  borderRadius: BORDER_RADIUS_MD / 4,
 }
 
 const options = createTheme({

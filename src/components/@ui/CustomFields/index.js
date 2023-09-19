@@ -4,6 +4,7 @@ import CustomPhone from "./CustomPhone";
 import CustomDateRange from "./CustomDateRange";
 import CustomDate from "./CustomDate";
 import CustomRadioGroup from "./CustomRadioGroup";
+import CustomFileLoader from "./CustomFileLoader";
 
 export {
   CustomSwitch,
@@ -12,4 +13,5 @@ export {
   CustomDateRange,
   CustomDate,
   CustomRadioGroup,
+  CustomFileLoader,
 };

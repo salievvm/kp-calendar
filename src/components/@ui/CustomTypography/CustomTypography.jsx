@@ -27,6 +27,9 @@ export default function CustomTypography() {
       <Typography variant="subtitle1" gutterBottom>
         subtitle1 = Inter/16-24-500-gray
       </Typography>
+      <Typography variant="subtitle2" gutterBottom>
+        subtitle2 = Inter/14-24-700-primary
+      </Typography>
       {/* <Typography variant="subtitle2" gutterBottom>
         subtitle2. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
         blanditiis tenetur

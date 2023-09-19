@@ -1,4 +1,4 @@
-import { MAIN_TEXT, SECOND_TEXT } from "./colors";
+import { MAIN_TEXT, PRIMARY, SECOND_TEXT } from "./colors";
 
 const typography = {
   fontFamily: 'Inter, Arial, sans-serif',
@@ -23,6 +23,12 @@ const typography = {
     fontWeight: 500,
     lineHeight: '24px',
     color: SECOND_TEXT,
+  },
+  subtitle2: {
+    fontSize: '14px',
+    fontWeight: 700,
+    lineHeight: '24px',
+    color: PRIMARY,
   },
   body1: {
     fontSize: '14px',

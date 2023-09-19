@@ -44,6 +44,10 @@ export default function CustomPhone({
     }
   }
 
+	React.useEffect(() => {
+    setVal(value);
+  }, [value])
+
   const sx = THEMES[theme];
 
   return (

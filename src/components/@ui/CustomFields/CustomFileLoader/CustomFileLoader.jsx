@@ -193,8 +193,8 @@ function CustomFileLoader({
       < Grid
         container
         gap={2}
-        marginTop={3}
-        marginBottom={3}
+        marginTop={files && files.length ? 3 : 0}
+        marginBottom={files && files.length ? 1 : 0}
       >
         {
           files ? files.map((file, index) => (

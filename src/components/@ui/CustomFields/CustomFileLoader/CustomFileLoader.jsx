@@ -135,55 +135,54 @@ function CustomFileLoader({
   defaultValues,
 }) {
   const [files, setFiles] = useState([]);
-  const [values, setValues] = useState([]);
-  const [hasChanged, setHasChanged] = React.useState(false);
 
-  console.log({ files, values });
+  console.log({ files });
 
-  function encodeFile(file, index) {
-    const reader = new FileReader();
-
-    // eslint-disable-next-line func-names
-    reader.onload = function () {
-      const encodedData = btoa(reader.result); // Закодировать в Base64
-      setValues((prev) => {
-        if (!index) {
-          return ([
-            { name: file.name, base64: encodedData }
-          ])
-        } else {
-          return [
-            ...prev,
-            { name: file.name, base64: encodedData },
-          ]
-        }
+  async function encodeFilesToBase64(fileList) {
+    const promises = [];
+    
+    for (let i = 0; i < fileList.length; i++) {
+      const file = fileList[i];
+      const promise = new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64String = reader.result.split(',')[1]; // отсекаем data:application/...;base64,
+          resolve({
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            base64: base64String
+          });
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
       });
-    };
-
-    reader.readAsBinaryString(file);
+      promises.push(promise);
+    }
+    
+    return Promise.all(promises);
   }
+  
 
-  const handleChange = (file) => {
+  const handleChange = async (file) => {
     setFiles(Array.from(file));
-    Array.from(file).map((item) => encodeFile(item));
-    setHasChanged(true);
+    const encodedFiles = await encodeFilesToBase64(file);
+    console.log({ encodedFiles });
+    onChange(encodedFiles);
   };
 
-  const handleRemoveFile = (index) => {
-    setFiles((prev) => {
-      const find = prev.find((item, i) => i === index);
-      if (find) return prev.filter((item, i) => i !== index);
-      return prev.concat(index);
-    });
-  }
+  const handleRemoveFile = async (index) => {
+    console.log({ index });
+    let newFiles = [];
+    const find = files.find((item, i) => i === index);
+    if (find) newFiles = files.filter((item, i) => i !== index);
+    else newFiles = files.concat(index);
 
-  React.useEffect(() => {
-    if (hasChanged && files && files.length) {
-      files.map((item, index) => encodeFile(item, index));
-    } else if (files.length !== values.length) {
-      setValues([]);
-    }
-  }, [files, hasChanged]);
+    setFiles(newFiles);
+    const encodedFiles = await encodeFilesToBase64(newFiles);
+    console.log({ encodedFiles });
+    onChange(encodedFiles);
+  }
 
   return (
     <>

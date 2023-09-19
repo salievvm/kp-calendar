@@ -19,6 +19,7 @@ const CustomRadioItem = ({
           bgcolor: checked ? theme.palette.primary.main : theme.palette.info.light,
           width: 48,
           height: 48,
+          transition: 'all 0.4s ease'
         })}
       >
         <Typography

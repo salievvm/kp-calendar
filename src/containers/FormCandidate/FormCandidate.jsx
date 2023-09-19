@@ -27,15 +27,6 @@ const FormCandidate = () => {
         subtitle={subtitle}
       />
       <CustomCard>
-        <CustomRadioGroup
-          options={[
-            { id: 'A', label: 'A' },
-            { id: 'B', label: 'B' },
-            { id: 'C', label: 'C' },
-            { id: 'D', label: 'D' },
-            { id: 'E', label: 'E' },
-          ]}
-        />
         <CustomAlertInfo
           title={alertTitle}
           subtitle={alertSubtitle}

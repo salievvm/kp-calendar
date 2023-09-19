@@ -8,6 +8,7 @@ import {
   CustomPhone,
   CustomDateRange,
   CustomDate,
+  CustomRadioGroup,
 } from '../../../components/@ui/CustomFields';
 
 import useApp from '../hooks/useApp';
@@ -36,6 +37,7 @@ const DisplayField = ({
     type,
     col,
     required,
+    options,
   } = field;
 
   const fieldTheme = React.useContext(SectionThemeContext);
@@ -72,6 +74,12 @@ const DisplayField = ({
         theme={textFieldTheme}
         onChange={onChange}
         value={value}
+      />
+    case radioGroup:
+      return <CustomRadioGroup
+        options={options}
+        value={value}
+        onChange={onChange}
       />
 
     default:

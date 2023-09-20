@@ -3,6 +3,7 @@ import { Badge, Grid, IconButton, Typography } from "@mui/material";
 import { Box, darken } from "@mui/system";
 import { FileUploader } from "react-drag-drop-files";
 import { CloseIcon, DOCIcon, FileIcon, PDFIcon, XLSIcon } from "../../../../assets/icons";
+import CustomAlertDialog from "../../CustomAlertDialog/CustomAlertDialog";
 
 // const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -179,8 +180,20 @@ function CustomFileLoader({
     onChange(encodedFiles);
   }
 
+  const [alertOpen, setAlertOpen] = React.useState(true);
+
+  const handleCloseAlert = () => {
+    setAlertOpen(false);
+  }
+
   return (
     <>
+      <CustomAlertDialog
+        open={alertOpen}
+        onClose={handleCloseAlert}
+        title='Вы пытаетесь загрузить файлы более 20 мб'
+        description='Попробуйте уменьшить размер файлов путем сжатия или оптимизации. Информация не точная, а может даже не актуальная.'
+      />
       <FileUploader
         handleChange={handleChange}
         name='file'

@@ -13,6 +13,8 @@ const CustomDate = ({
 	onChange,
 	theme,
 	required,
+	minDate,
+	maxDate,
 }) => {
 	const size = useWindowSize();
 
@@ -52,6 +54,8 @@ const CustomDate = ({
 				close={closeDateRangePicker}
 				monthsShown={rangeMounthNumber}
 				range={false}
+				minDate={minDate}
+        maxDate={maxDate}
 			/>}
 		</>
 	);
@@ -65,6 +69,8 @@ CustomDate.propTypes = {
 	onChange: PropTypes.func,
 	theme: PropTypes.oneOf(['base', 'filled']).isRequired,
 	required: PropTypes.bool,
+	minDate: PropTypes.instanceOf(Date),
+	maxDate: PropTypes.instanceOf(Date),
 };
 
 CustomDate.defaultProps = {
@@ -72,4 +78,6 @@ CustomDate.defaultProps = {
 	value: '',
 	required: false,
 	onChange: () => { },
+	minDate: new Date(1970, 1, 1),
+	maxDate: new Date(),
 };

@@ -13,7 +13,7 @@ const KPDatePicker = ({
 	maxDate = new Date(2099, 1, 1),
 	monthsShown = 1,
 	range = true,
-	minDate = new Date()
+	minDate = new Date(),
 }) => {
 	//   const size = useWindowSize();
 	//   const detectOrientation = () =>{

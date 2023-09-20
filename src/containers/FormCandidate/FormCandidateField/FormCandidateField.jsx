@@ -41,6 +41,8 @@ const DisplayField = ({
     // col,
     required,
     options,
+    minDate,
+    maxDate,
   } = field;
 
   const fieldTheme = React.useContext(SectionThemeContext);
@@ -69,6 +71,8 @@ const DisplayField = ({
         theme={textFieldTheme}
         onChange={onChange}
         value={value}
+        minDate={minDate || new Date(1970, 1, 1,)}
+        maxDate={maxDate || new Date()}
       />
     case dateMulti:
       return <CustomDateRange
@@ -77,6 +81,8 @@ const DisplayField = ({
         theme={textFieldTheme}
         onChange={onChange}
         value={value}
+        minDate={minDate || new Date(1970, 1, 1,)}
+        maxDate={maxDate || new Date()}
       />
     case radioGroup:
       return <CustomRadioGroup

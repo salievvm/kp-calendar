@@ -127,6 +127,8 @@ const schema = {
             type: date,
             col: 6,
             required: true,
+            minDate: new Date(1920, 1, 1),
+            maxDate: new Date(),
           },
           placeBirth: {
             title: 'Место рождения',
@@ -148,6 +150,8 @@ const schema = {
             type: date,
             col: 6,
             required: true,
+            minDate: new Date(1970, 1, 1),
+            maxDate: new Date(),
           },
           issuedBy: {
             title: 'Кем выдан',
@@ -289,21 +293,21 @@ const schema = {
       0: {
         title: 'Контактное лицо №1',
         items: {
-          dateBirth: {
+          relativeDegree: {
             title: 'Степень родства',
             code: '',
             type: text,
             col: 12,
             required: true,
           },
-          placeBirth: {
+          relativeFio: {
             title: 'ФИО родственника',
             code: '',
             type: text,
             col: 12,
             required: true,
           },
-          serialNumber: {
+          phone: {
             title: 'Контактный телефон',
             code: '',
             type: phone,
@@ -315,26 +319,26 @@ const schema = {
       1: {
         title: 'Контактное лицо №2',
         items: {
-          dateBirth: {
+          relativeDegree: {
             title: 'Степень родства',
             code: '',
             type: text,
             col: 12,
-            required: false,
+            required: true,
           },
-          placeBirth: {
+          relativeFio: {
             title: 'ФИО родственника',
             code: '',
             type: text,
             col: 12,
-            required: false,
+            required: true,
           },
-          serialNumber: {
+          phone: {
             title: 'Контактный телефон',
             code: '',
             type: phone,
             col: 12,
-            required: false,
+            required: true,
           },
         },
       },
@@ -358,6 +362,8 @@ const schema = {
             type: dateMulti,
             col: 12,
             required: false,
+            minDate: new Date(1970, 1, 1),
+            maxDate: new Date(),
           },
           companyName: {
             title: 'Наименование организации',
@@ -403,15 +409,15 @@ const schema = {
             col: 12,
             required: false,
           },
-          positionAtWork: {
-            title: 'Занимаемая должность',
+          phone: {
+            title: 'Контактный телефон',
             code: '',
-            type: text,
+            type: phone,
             col: 12,
             required: false,
           },
-          reasonForDismissal: {
-            title: 'Причина увольнения',
+          positionAtWork: {
+            title: 'Занимаемая должность',
             code: '',
             type: text,
             col: 12,

@@ -4,6 +4,7 @@ import Container from './Container';
 import Paper from './Paper';
 import TextField from './TextField';
 import Button from './Button';
+import Dialog from './Dialog';
 // ----------------------------------------------------------------------
 
 export default function ComponentsOverrides(theme) {
@@ -13,5 +14,6 @@ export default function ComponentsOverrides(theme) {
     Paper(theme),
     TextField(theme),
     Button(theme),
+    Dialog(theme),
   );
 };

@@ -5,6 +5,7 @@ import CustomDateRange from "./CustomDateRange";
 import CustomDate from "./CustomDate";
 import CustomRadioGroup from "./CustomRadioGroup";
 import CustomFileLoader from "./CustomFileLoader";
+import CustomAutocomplete from "./CustomAutocomplete";
 
 export {
   CustomSwitch,
@@ -14,4 +15,5 @@ export {
   CustomDate,
   CustomRadioGroup,
   CustomFileLoader,
+  CustomAutocomplete,
 };

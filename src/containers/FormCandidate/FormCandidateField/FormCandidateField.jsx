@@ -10,6 +10,7 @@ import {
   CustomDate,
   CustomRadioGroup,
   CustomFileLoader,
+  CustomAutocomplete,
 } from '../../../components/@ui/CustomFields';
 
 import useApp from '../hooks/useApp';
@@ -24,9 +25,9 @@ const {
   date,
   dateMulti,
   file,
+  list,
   // text,
   // email,
-  // list,
 } = FIELD_TYPES;
 
 const DisplayField = ({
@@ -41,6 +42,8 @@ const DisplayField = ({
     // col,
     required,
     options,
+    minDate,
+    maxDate,
   } = field;
 
   const fieldTheme = React.useContext(SectionThemeContext);
@@ -69,6 +72,8 @@ const DisplayField = ({
         theme={textFieldTheme}
         onChange={onChange}
         value={value}
+        minDate={minDate || new Date(1970, 1, 1,)}
+        maxDate={maxDate || new Date()}
       />
     case dateMulti:
       return <CustomDateRange
@@ -77,6 +82,8 @@ const DisplayField = ({
         theme={textFieldTheme}
         onChange={onChange}
         value={value}
+        minDate={minDate || new Date(1970, 1, 1,)}
+        maxDate={maxDate || new Date()}
       />
     case radioGroup:
       return <CustomRadioGroup
@@ -101,6 +108,15 @@ const DisplayField = ({
         value={value}
         onChange={onChange}
         theme={textFieldTheme}
+      />
+    case list:
+      return <CustomAutocomplete
+        required={required}
+        placeholder={title}
+        val={value}
+        onChange={onChange}
+        theme={textFieldTheme}
+        options={options}
       />
 
     default:

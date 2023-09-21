@@ -61,7 +61,7 @@ function reducer(state = initState, action) {
             ...state.schema[section],
             sections: {
               ...state.schema[section].sections,
-              [lastKey + 1]: lastSection,
+              [Number(lastKey) + 1]: lastSection,
             },
           },
         }

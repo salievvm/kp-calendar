@@ -71,7 +71,7 @@ const FormCandidateSection = ({
                   canAdd && repeatable && index === Object.keys(sections).length - 1 ? (
                     <>
                       <Grid item xs={8}>
-                        <Typography variant="h3">{subSectionTitle}</Typography>
+                        <Typography variant="h3">{subtitle}</Typography>
                       </Grid>
                       <Grid item xs={4} sx={{ textAlign: 'right' }}>
                         <Button

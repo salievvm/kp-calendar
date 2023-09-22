@@ -26,6 +26,10 @@ export default function TextField(theme) {
           ':hover:not(.Mui-disabled, .Mui-error):before': {
             borderBottom: 0,
           },
+          '&.Mui-error': {
+            color: '#f0f0f0',
+            border: `1px solid ${theme.palette.primary.main}`,
+          },
         },
       },
     },

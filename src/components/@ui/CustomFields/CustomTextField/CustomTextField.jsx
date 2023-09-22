@@ -28,6 +28,7 @@ export default function CustomTextField({
   autoComplete,
   multiline,
   icon,
+  type,
 }) {
   const [val, setVal] = React.useState(value);
 
@@ -35,9 +36,46 @@ export default function CustomTextField({
     setVal(e.currentTarget.value);
   }
 
+  const defaultErrorState = {
+    error: false,
+    title: '',
+  };
+
+  const [error, setError] = React.useState(defaultErrorState);
+
+  const validateEmail = (mail) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return (true);
+    }
+    return (false);
+  }
+
   const deboundedOnChange = () => {
     if (value !== val) {
       onChange(val);
+    }
+
+    console.log({ val });
+
+    if (type === "email") {
+      const res = validateEmail(val);
+      if (!res) {
+        setError({
+          error: true,
+          title: 'Некорректный email',
+        });
+      } else {
+        setError(defaultErrorState);
+      }
+    }
+
+    if (required && !val) {
+      setError({
+        error: true,
+        title: 'Обязательное поле',
+      });
+    } else {
+      setError(defaultErrorState);
     }
   }
 
@@ -56,6 +94,8 @@ export default function CustomTextField({
 
   return (
     <TextField
+      error={error.error}
+      helperText={error.title}
       required={required}
       fullWidth
       label={label}
@@ -63,7 +103,7 @@ export default function CustomTextField({
       value={val}
       onChange={handleChangeValue}
       sx={sx}
-      type="email"
+      type={type}
       onBlur={deboundedOnChange}
       onClick={onClick}
       autoComplete={autoComplete ? 'on' : 'off'}

@@ -26,8 +26,8 @@ const {
   dateMulti,
   file,
   list,
+  email,
   // text,
-  // email,
 } = FIELD_TYPES;
 
 const DisplayField = ({
@@ -117,6 +117,15 @@ const DisplayField = ({
         onChange={onChange}
         theme={textFieldTheme}
         options={options}
+      />
+    case email:
+      return <CustomTextField
+        required={required}
+        label={title}
+        value={value}
+        onChange={onChange}
+        theme={textFieldTheme}
+        type={email}
       />
 
     default:

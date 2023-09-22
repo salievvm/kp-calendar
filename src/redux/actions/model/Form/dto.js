@@ -362,15 +362,6 @@ const schema = {
       0: {
         title: 'Последнее место работы',
         items: {
-          periodOfWork: {
-            title: 'Период работы',
-            code: '',
-            type: dateMulti,
-            col: 12,
-            required: false,
-            minDate: new Date(1970, 1, 1),
-            maxDate: new Date(),
-          },
           companyName: {
             title: 'Наименование организации',
             code: '',
@@ -384,6 +375,15 @@ const schema = {
             type: text,
             col: 12,
             required: false,
+          },
+          periodOfWork: {
+            title: 'Период работы',
+            code: '',
+            type: dateMulti,
+            col: 12,
+            required: false,
+            minDate: new Date(1970, 1, 1),
+            maxDate: new Date(),
           },
           reasonForDismissal: {
             title: 'Причина увольнения',

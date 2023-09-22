@@ -94,14 +94,16 @@ const FormCandidateSection = ({
               {Object.keys(items).map((fieldCode) => {
                 const field = items[fieldCode];
                 return (
-                  <Grid item xs={field.col} key={fieldCode}>
-                    <FormCandidateField
-                      field={field}
-                      fieldCode={fieldCode}
-                      sectionCode={sectionCode}
-                      subsectionCode={subsectionCode}
-                    />
-                  </Grid>
+                  !field.disabled ? (
+                    <Grid item xs={field.col} key={fieldCode}>
+                      <FormCandidateField
+                        field={field}
+                        fieldCode={fieldCode}
+                        sectionCode={sectionCode}
+                        subsectionCode={subsectionCode}
+                      />
+                    </Grid>
+                  ) : null
                 )
               })}
             </Grid>

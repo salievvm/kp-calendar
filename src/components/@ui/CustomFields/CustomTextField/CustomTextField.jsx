@@ -31,6 +31,7 @@ export default function CustomTextField({
   type,
 }) {
   const [val, setVal] = React.useState(value);
+  const [hasChanged, setHasChanged] = React.useState(false);
 
   const handleChangeValue = (e) => {
     setVal(e.currentTarget.value);
@@ -50,22 +51,18 @@ export default function CustomTextField({
     return (false);
   }
 
-  const deboundedOnChange = () => {
-    if (value !== val) {
-      onChange(val);
-    }
-
-    console.log({ val });
-
+  const validate = (val) => {
     if (type === "email") {
       const res = validateEmail(val);
+
+      console.log({ res });
       if (!res) {
-        setError({
+        return setError({
           error: true,
           title: 'Некорректный email',
         });
       } else {
-        setError(defaultErrorState);
+        return setError(defaultErrorState);
       }
     }
 
@@ -79,9 +76,21 @@ export default function CustomTextField({
     }
   }
 
+  const deboundedOnChange = () => {
+    setHasChanged(true);
+    if (value !== val) {
+      onChange(val);
+    }
+
+    validate(val);
+  }
+
   React.useEffect(() => {
     setVal(value);
-  }, [value])
+    if (hasChanged) {
+      validate(value);
+    }
+  }, [value, hasChanged])
 
   // React.useEffect(() => {
   //   const delayDebounceFn = setTimeout(() => {
@@ -141,7 +150,7 @@ CustomTextField.defaultProps = {
   label: '',
   value: '',
   required: false,
-  autoComplete: true,
+  autoComplete: false,
   multiline: false,
   onChange: () => { },
   onClick: () => { },

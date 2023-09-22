@@ -4,6 +4,10 @@ import { IMaskInput } from 'react-imask';
 import TextField from '@mui/material/TextField';
 import { THEMES } from '../CustomTextField';
 
+function onlyNumeric(str) {
+  return `${str.replace(/\D/g, '')}`;
+}
+
 const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   const { onChange, ...other } = props;
   return (
@@ -16,6 +20,7 @@ const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
       inputRef={ref}
       onAccept={(value) => onChange({ target: { name: props.name, value } })}
       overwrite
+      autoComplete="off"
     />
   );
 });
@@ -32,13 +37,45 @@ export default function CustomPhone({
   theme,
   required,
 }) {
+  const defaultErrorState = {
+    error: false,
+    title: '',
+  };
+
   const [val, setVal] = React.useState(value);
+  const [error, setError] = React.useState(defaultErrorState);
+  const [hasChanged, setHasChanged] = React.useState(false);
+
+  const validatePhone = (phone) => {
+    const value = onlyNumeric(phone);
+    if (value.length < 11) return false;
+    return true;
+  }
+
+  const validate = (val) => {
+    const res = validatePhone(val);
+
+    if (required && !val) {
+      setError({
+        error: true,
+        title: 'Обязательное поле',
+      });
+    } else if (required && !res) {
+      setError({
+        error: true,
+        title: 'Неверный формат',
+      });
+    } else {
+      setError(defaultErrorState);
+    }
+  }
 
   const handleChangeValue = (e) => {
     setVal(e.target.value);
   }
 
   const deboundedOnChange = () => {
+    setHasChanged(true);
     if (value !== val) {
       onChange(val);
     }
@@ -46,12 +83,17 @@ export default function CustomPhone({
 
 	React.useEffect(() => {
     setVal(value);
-  }, [value])
+    if (hasChanged) {
+      validate(value);
+    }
+  }, [value, hasChanged])
 
   const sx = THEMES[theme];
 
   return (
     <TextField
+      error={error.error}
+      helperText={error.title}
       fullWidth
       label={label}
       value={val}
@@ -65,6 +107,7 @@ export default function CustomPhone({
       variant="filled"
       sx={sx}
       onBlur={deboundedOnChange}
+      autoComplete="off"
     />
   );
 };

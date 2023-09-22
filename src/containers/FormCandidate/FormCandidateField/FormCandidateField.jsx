@@ -44,10 +44,13 @@ const DisplayField = ({
     options,
     minDate,
     maxDate,
+    disabled,
   } = field;
 
   const fieldTheme = React.useContext(SectionThemeContext);
   const textFieldTheme = TEXT_FIELD_THEMES[fieldTheme];
+
+  if (disabled) return null;
 
   switch (type) {
     case radio:
@@ -150,7 +153,12 @@ const FormCandidateField = ({
   } = useApp();
 
   const handleDisplayFieldChange = (value) => {
-    handleFieldChange(sectionCode, subsectionCode, fieldCode, value)
+    handleFieldChange(
+      sectionCode,
+      subsectionCode,
+      fieldCode,
+      value,
+    );
   }
 
   return (

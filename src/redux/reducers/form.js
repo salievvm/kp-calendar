@@ -2,21 +2,55 @@ import { schema } from "../actions/model/Form/dto";
 
 import _ from 'lodash';
 
+import { FIELD_TYPES } from "../../consts";
+
 export const SET_FIELDS = 'SET_FIELDS';
 export const SET_FIELD = 'SET_FIELD';
 export const ADD_SUBSECTION = 'ADD_SUBSECTION';
 export const ERASE_SUBSECTION = 'ERASE_SUBSECTION';
 export const REMOVE_SUBSECTION = 'REMOVE_SUBSECTION';
 
+
+const {
+  text,
+  radio,
+} = FIELD_TYPES;
+
 const initState = {
   schema,
   fields: {},
-}
+};
 
 function reducer(state = initState, action) {
   switch (action.type) {
     case SET_FIELD:
       const { section, subsection, code, value } = action.data;
+
+      /** Реализован механизм логики переключателей
+       * Если у radio есть linkedField = linkedField становится disabled
+       * Если у linkedField есть свой linkedField = у первого linkedField value берется из второго linkedField
+       * Если у linkedField нет своего linkedField = у первого linkedField value ставится из radio field.title
+       */
+      let linkedField = null;
+      const field = state.schema[section].sections[subsection].items[code];
+
+      if (field.type === radio && field.linkedField) {
+        linkedField = state.schema[section].sections[subsection].items[field.linkedField];
+        
+        if (value) {
+          linkedField.disabled = true;
+
+          const subLinkedField = state.schema[section].sections[subsection].items[linkedField.linkedField];
+          if (subLinkedField) {
+            linkedField.value = subLinkedField.value;
+          } else {
+            linkedField.value = field.title;
+          }
+        } else {
+          linkedField.disabled = false;
+        }
+      }
+
       return {
         ...state,
         schema: {
@@ -39,6 +73,7 @@ function reducer(state = initState, action) {
           },
         }
       };
+
     case ADD_SUBSECTION: {
       const { section } = action.data;
 
@@ -67,14 +102,14 @@ function reducer(state = initState, action) {
         }
       };
     }
-    
+
     case ERASE_SUBSECTION: {
       const { section } = action.data;
 
       const { sections } = state.schema[section];
       const keys = Object.keys(sections);
       const firstKey = keys[0];
-      
+
       /** Не смотря на то что создаем переменную firstSection
        * все равно будем работать с исходным объектом, и удалять его поле value
        * потому что нет глубокого копирования как в ADD_SUBSECTION */
@@ -97,7 +132,7 @@ function reducer(state = initState, action) {
         }
       };
     }
-    
+
     case REMOVE_SUBSECTION: {
       const { section } = action.data;
 

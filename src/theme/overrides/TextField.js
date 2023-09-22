@@ -27,7 +27,6 @@ export default function TextField(theme) {
             borderBottom: 0,
           },
           '&.Mui-error': {
-            color: '#f0f0f0',
             border: `1px solid ${theme.palette.primary.main}`,
           },
         },
@@ -40,5 +39,16 @@ export default function TextField(theme) {
         },
       },
     },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          '&.Mui-error': {
+            position: 'absolute',
+            top: '54px',
+            marginTop: 0,
+          },
+        },
+      },
+    },
   };
-}
+};

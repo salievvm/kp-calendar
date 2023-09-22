@@ -2,13 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
 
-const VARIANTS = {
-  base: {},
-  filled: {
-    bgcolor: 'info.main',
-  },
-};
-
 export default function CustomCard({
   children,
   padding,
@@ -16,6 +9,22 @@ export default function CustomCard({
   width,
   variant,
 }) {
+  const sx = (theme) => ({
+    base: {
+      padding: '40px',
+      [theme.breakpoints.down('sm')]: {
+        padding: '24px',
+      },
+    },
+    filled: {
+      bgcolor: 'info.main',
+      padding: '40px',
+      [theme.breakpoints.down('sm')]: {
+        padding: '24px',
+      },
+    },
+  });
+
   return (
     <Paper
       elevation={0}
@@ -24,7 +33,7 @@ export default function CustomCard({
         width,
         margin,
       }}
-      sx={VARIANTS[variant]}
+      sx={(theme) => sx(theme)[variant]}
     >
       {children}
     </Paper>
@@ -36,7 +45,7 @@ CustomCard.propTypes = {
   padding: PropTypes.number,
   margin: PropTypes.any,
   width: PropTypes.any,
-  variant: PropTypes.oneOf(Object.keys(VARIANTS)),
+  variant: PropTypes.oneOf(['base', 'filled']),
 };
 
 CustomCard.defaultProps = {

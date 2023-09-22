@@ -28,22 +28,70 @@ export default function CustomTextField({
   autoComplete,
   multiline,
   icon,
+  type,
 }) {
   const [val, setVal] = React.useState(value);
+  const [hasChanged, setHasChanged] = React.useState(false);
 
   const handleChangeValue = (e) => {
     setVal(e.currentTarget.value);
   }
 
+  const defaultErrorState = {
+    error: false,
+    title: '',
+  };
+
+  const [error, setError] = React.useState(defaultErrorState);
+
+  const validateEmail = (mail) => {
+    if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return (true);
+    }
+    return (false);
+  }
+
+  const validate = (val) => {
+    if (type === "email") {
+      const res = validateEmail(val);
+
+      console.log({ res });
+      if (!res) {
+        return setError({
+          error: true,
+          title: 'Некорректный email',
+        });
+      } else {
+        return setError(defaultErrorState);
+      }
+    }
+
+    if (required && !val) {
+      setError({
+        error: true,
+        title: 'Обязательное поле',
+      });
+    } else {
+      setError(defaultErrorState);
+    }
+  }
+
   const deboundedOnChange = () => {
+    setHasChanged(true);
     if (value !== val) {
       onChange(val);
     }
+
+    validate(val);
   }
 
   React.useEffect(() => {
     setVal(value);
-  }, [value])
+    if (hasChanged) {
+      validate(value);
+    }
+  // eslint-disable-next-line
+  }, [value, hasChanged]);
 
   // React.useEffect(() => {
   //   const delayDebounceFn = setTimeout(() => {
@@ -56,6 +104,8 @@ export default function CustomTextField({
 
   return (
     <TextField
+      error={error.error}
+      helperText={error.title}
       required={required}
       fullWidth
       label={label}
@@ -63,7 +113,7 @@ export default function CustomTextField({
       value={val}
       onChange={handleChangeValue}
       sx={sx}
-      type="email"
+      type={type}
       onBlur={deboundedOnChange}
       onClick={onClick}
       autoComplete={autoComplete ? 'on' : 'off'}
@@ -101,7 +151,7 @@ CustomTextField.defaultProps = {
   label: '',
   value: '',
   required: false,
-  autoComplete: true,
+  autoComplete: false,
   multiline: false,
   onChange: () => { },
   onClick: () => { },

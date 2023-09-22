@@ -10,7 +10,6 @@ import { CustomInformer } from '../../../components/@ui/CustomTypography';
 import useApp from '../hooks/useApp';
 import { SECTION_TYPES } from '../../../consts';
 
-
 const FormCandidateSection = ({
   sectionType,
   sectionCode,
@@ -52,10 +51,10 @@ const FormCandidateSection = ({
             return <Grid key={subsectionCode} container spacing={2}>
               {repeatable && subSectionTitle && index === 0 ? (
                 <>
-                  <Grid item xs={8}>
+                  <Grid item xs={9}>
                     <Typography variant="h3">{subSectionTitle}</Typography>
                   </Grid>
-                  <Grid item xs={4} sx={{ textAlign: 'right' }}>
+                  <Grid item xs={3} sx={{ textAlign: 'right' }}>
                     <Button
                       size="small"
                       variant="text"
@@ -70,10 +69,10 @@ const FormCandidateSection = ({
                 subtitle ? (
                   canAdd && repeatable && index === Object.keys(sections).length - 1 ? (
                     <>
-                      <Grid item xs={8}>
+                      <Grid item xs={9}>
                         <Typography variant="h3">{subtitle}</Typography>
                       </Grid>
-                      <Grid item xs={4} sx={{ textAlign: 'right' }}>
+                      <Grid item xs={3} sx={{ textAlign: 'right' }}>
                         <Button
                           size="small"
                           variant="text"
@@ -94,14 +93,16 @@ const FormCandidateSection = ({
               {Object.keys(items).map((fieldCode) => {
                 const field = items[fieldCode];
                 return (
-                  <Grid item xs={field.col} key={fieldCode}>
-                    <FormCandidateField
-                      field={field}
-                      fieldCode={fieldCode}
-                      sectionCode={sectionCode}
-                      subsectionCode={subsectionCode}
-                    />
-                  </Grid>
+                  !field.disabled ? (
+                    <Grid item xs={12} md={field.col} key={fieldCode}>
+                      <FormCandidateField
+                        field={field}
+                        fieldCode={fieldCode}
+                        sectionCode={sectionCode}
+                        subsectionCode={subsectionCode}
+                      />
+                    </Grid>
+                  ) : null
                 )
               })}
             </Grid>

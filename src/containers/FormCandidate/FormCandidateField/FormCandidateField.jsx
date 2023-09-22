@@ -26,8 +26,8 @@ const {
   dateMulti,
   file,
   list,
+  email,
   // text,
-  // email,
 } = FIELD_TYPES;
 
 const DisplayField = ({
@@ -44,10 +44,13 @@ const DisplayField = ({
     options,
     minDate,
     maxDate,
+    disabled,
   } = field;
 
   const fieldTheme = React.useContext(SectionThemeContext);
   const textFieldTheme = TEXT_FIELD_THEMES[fieldTheme];
+
+  if (disabled) return null;
 
   switch (type) {
     case radio:
@@ -118,6 +121,15 @@ const DisplayField = ({
         theme={textFieldTheme}
         options={options}
       />
+    case email:
+      return <CustomTextField
+        required={required}
+        label={title}
+        value={value}
+        onChange={onChange}
+        theme={textFieldTheme}
+        type={email}
+      />
 
     default:
       return <CustomTextField
@@ -141,7 +153,12 @@ const FormCandidateField = ({
   } = useApp();
 
   const handleDisplayFieldChange = (value) => {
-    handleFieldChange(sectionCode, subsectionCode, fieldCode, value)
+    handleFieldChange(
+      sectionCode,
+      subsectionCode,
+      fieldCode,
+      value,
+    );
   }
 
   return (

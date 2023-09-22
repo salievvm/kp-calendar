@@ -26,6 +26,9 @@ export default function TextField(theme) {
           ':hover:not(.Mui-disabled, .Mui-error):before': {
             borderBottom: 0,
           },
+          '&.Mui-error': {
+            border: `1px solid ${theme.palette.primary.main}`,
+          },
         },
       },
     },
@@ -36,5 +39,16 @@ export default function TextField(theme) {
         },
       },
     },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          '&.Mui-error': {
+            position: 'absolute',
+            top: '54px',
+            marginTop: 0,
+          },
+        },
+      },
+    },
   };
-}
+};

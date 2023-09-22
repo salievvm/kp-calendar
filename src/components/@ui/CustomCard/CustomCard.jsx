@@ -40,7 +40,7 @@ CustomCard.propTypes = {
 };
 
 CustomCard.defaultProps = {
-  padding: 48,
+  // padding: 48,
   width: '100%',
   margin: 0,
   variant: 'base',

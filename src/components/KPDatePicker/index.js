@@ -117,7 +117,7 @@ const Header = ({ pickerProps, maxDate, minDate = new Date() }) => {
 	const currentYear = minDate.getFullYear()
 	const maxYear = maxDate.getFullYear()
 	const years = [];
-	for (let i = currentYear; i <= maxYear; i++) {
+	for (let i = maxYear; i >= currentYear; i--) {
 		years.push(i);
 	}
 
@@ -150,7 +150,8 @@ const Header = ({ pickerProps, maxDate, minDate = new Date() }) => {
 		nextMonthButtonDisabled,
 		customHeaderCount,
 		monthDate
-	} = pickerProps
+	} = pickerProps;
+
 	return (
 		<>
 			<button
@@ -195,14 +196,14 @@ const Header = ({ pickerProps, maxDate, minDate = new Date() }) => {
 								{option}
 							</option>
 							{
-								months.map((mounth, i) => {
-									if (minDate > new Date(option, i + 1) || new Date(option, i) > new Date(maxDate.getFullYear(), maxDate.getMonth())) {
+								months.slice().reverse().map((mounth, i) => {
+									if (minDate > new Date(option, 11 - i + 1) || new Date(option, 11 - i) > new Date(maxDate.getFullYear(), maxDate.getMonth())) {
 										return null
 									}
 									return (
 										<option
 											key={`${customHeaderCount}${option}${mounth}`}
-											value={new Date(option, i).getTime()}
+											value={new Date(option, 11 - i).getTime()}
 										>
 											{mounth}
 										</option>

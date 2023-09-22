@@ -6,7 +6,6 @@ import FormCandidateSection from '../FormCandidateSection';
 import useApp from '../hooks/useApp';
 import { SECTION_TYPES } from '../../../consts';
 
-
 const FormCandidateSectionList = ({
   schema,
 }) => {

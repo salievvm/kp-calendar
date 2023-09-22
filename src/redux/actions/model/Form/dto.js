@@ -38,6 +38,7 @@ const schema = {
             code: '',
             type: text,
             col: 12,
+            disabled: false,
           },
           nobodyRecommended: {
             title: 'Никто не рекоммендовал',
@@ -67,9 +68,11 @@ const schema = {
             code: '',
             type: text,
             col: 12,
+            disabled: false,
+            linkedField: 'fio',
           },
           fioChanged: {
-            title: 'Данные менялись',
+            title: 'Данные не менялись',
             code: '',
             type: radio,
             linkedField: 'fioPrevious',
@@ -88,6 +91,8 @@ const schema = {
             type: text,
             col: 12,
             required: true,
+            disabled: false,
+            linkedField: 'addressRegistration',
           },
           addressesSame: {
             title: 'Совпадает с адресом регистрации',
@@ -246,6 +251,7 @@ const schema = {
             type: text,
             col: 12,
             required: true,
+            disabled: false,
           },
           notLawViolation: {
             title: 'Не привлекался',
@@ -324,21 +330,21 @@ const schema = {
             code: '',
             type: text,
             col: 12,
-            required: true,
+            required: false,
           },
           relativeFio: {
             title: 'ФИО родственника',
             code: '',
             type: text,
             col: 12,
-            required: true,
+            required: false,
           },
           phone: {
             title: 'Контактный телефон',
             code: '',
             type: phone,
             col: 12,
-            required: true,
+            required: false,
           },
         },
       },
@@ -356,15 +362,6 @@ const schema = {
       0: {
         title: 'Последнее место работы',
         items: {
-          periodOfWork: {
-            title: 'Период работы',
-            code: '',
-            type: dateMulti,
-            col: 12,
-            required: false,
-            minDate: new Date(1970, 1, 1),
-            maxDate: new Date(),
-          },
           companyName: {
             title: 'Наименование организации',
             code: '',
@@ -378,6 +375,15 @@ const schema = {
             type: text,
             col: 12,
             required: false,
+          },
+          periodOfWork: {
+            title: 'Период работы',
+            code: '',
+            type: dateMulti,
+            col: 12,
+            required: false,
+            minDate: new Date(1970, 1, 1),
+            maxDate: new Date(),
           },
           reasonForDismissal: {
             title: 'Причина увольнения',

@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 export default function CustomAlert({
   children,
   icon,
+  showButton,
 }) {
   const [open, setOpen] = React.useState(true);
 
@@ -36,7 +37,7 @@ export default function CustomAlert({
           {children}
         </Alert>
       </Collapse>
-      {!open ? (
+      {!open && showButton ? (
         <Button
           disabled={open}
           variant="outlined"
@@ -44,7 +45,7 @@ export default function CustomAlert({
             setOpen(true);
           }}
         >
-          Re-open
+          Вернуть
         </Button>
       ) : null}
     </Box>
@@ -54,9 +55,11 @@ export default function CustomAlert({
 CustomAlert.propTypes = {
   children: PropTypes.element.isRequired,
   icon: PropTypes.bool,
+  showButton: PropTypes.bool,
 };
 
 CustomAlert.defaultProps = {
   icon: true,
+  showButton: false,
 };
 

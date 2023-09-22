@@ -37,7 +37,6 @@ const FormCandidate = () => {
       <CustomCard margin={'24px 0 24px 0'}>
         <CustomTypography />
       </CustomCard>
-
     </Grid>
   )
 };

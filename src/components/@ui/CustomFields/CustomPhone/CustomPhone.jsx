@@ -1,3 +1,5 @@
+// eslint-disable
+
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { IMaskInput } from 'react-imask';
@@ -81,11 +83,12 @@ export default function CustomPhone({
     }
   }
 
-	React.useEffect(() => {
+  React.useEffect(() => {
     setVal(value);
     if (hasChanged) {
       validate(value);
     }
+  // eslint-disable-next-line
   }, [value, hasChanged])
 
   const sx = THEMES[theme];

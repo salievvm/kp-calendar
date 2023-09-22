@@ -12,7 +12,7 @@ export const REMOVE_SUBSECTION = 'REMOVE_SUBSECTION';
 
 
 const {
-  text,
+  // text,
   radio,
 } = FIELD_TYPES;
 

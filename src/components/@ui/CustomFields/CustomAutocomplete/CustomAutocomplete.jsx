@@ -2,8 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import Button from '@mui/material/Button';
-import CustomTextField, { THEMES } from '../CustomTextField';
+import { THEMES } from '../CustomTextField';
 
 export default function CustomAutocomplete({
   options,

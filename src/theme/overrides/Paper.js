@@ -6,10 +6,6 @@ export default function Alert(theme) {
       styleOverrides: {
         rounded: {
           borderRadius: BORDER_RADIUS_MD,
-          padding: '40px',
-          [theme.breakpoints.down('sm')]: {
-            padding: '24px',
-          },
         },
       },
     },

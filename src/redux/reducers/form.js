@@ -10,7 +10,6 @@ export const ADD_SUBSECTION = 'ADD_SUBSECTION';
 export const ERASE_SUBSECTION = 'ERASE_SUBSECTION';
 export const REMOVE_SUBSECTION = 'REMOVE_SUBSECTION';
 
-
 const {
   // text,
   radio,

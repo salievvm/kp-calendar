@@ -10,7 +10,6 @@ import { CustomInformer } from '../../../components/@ui/CustomTypography';
 import useApp from '../hooks/useApp';
 import { SECTION_TYPES } from '../../../consts';
 
-
 const FormCandidateSection = ({
   sectionType,
   sectionCode,

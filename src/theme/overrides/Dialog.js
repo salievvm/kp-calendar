@@ -1,4 +1,3 @@
-import { MAIN_TEXT } from "../colors";
 import { BORDER_RADIUS_SM } from "../const";
 
 export default function Dialog(theme) {

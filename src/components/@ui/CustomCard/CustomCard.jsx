@@ -11,7 +11,7 @@ const VARIANTS = {
 
 export default function CustomCard({
   children,
-  // padding,
+  padding,
   margin,
   width,
   variant,
@@ -20,7 +20,7 @@ export default function CustomCard({
     <Paper
       elevation={0}
       style={{
-        // padding,
+        padding,
         width,
         margin,
       }}
@@ -33,7 +33,7 @@ export default function CustomCard({
 
 CustomCard.propTypes = {
   children: PropTypes.any.isRequired,
-  // padding: PropTypes.number,
+  padding: PropTypes.number,
   margin: PropTypes.any,
   width: PropTypes.any,
   variant: PropTypes.oneOf(Object.keys(VARIANTS)),

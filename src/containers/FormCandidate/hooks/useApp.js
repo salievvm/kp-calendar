@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { obApp, obForm } from "../../../redux/actions/model";
+import { obFormService } from "../../../redux/actions/service";
 
 const useApp = () => {
   const {
@@ -24,9 +25,9 @@ const useApp = () => {
     obForm.setField(section, subsection, code, value);
   }
 
-  const handleSendForm = () => {
-    obForm.send();
-    handleMakeLoading();
+  const handleSendForm = async () => {
+    await obFormService.send();
+    // handleMakeLoading();
   }
 
   const handleAddSubSection = (section) => {

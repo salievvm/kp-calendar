@@ -29,7 +29,7 @@ const schema = {
         items: {
           whichPosition: {
             title: 'На какую должность претендуете?',
-            code: '',
+            code: 'UF_CRM_14_VACANCY',
             type: text,
             col: 12,
           },
@@ -58,14 +58,14 @@ const schema = {
         items: {
           fio: {
             title: 'Ваши ФИО',
-            code: '',
+            code: 'NAME',
             type: text,
             col: 12,
             required: true,
           },
           fioPrevious: {
             title: 'ФИО до изменения',
-            code: '',
+            code: 'UF_CRM_14_FIO_PREV',
             type: text,
             col: 12,
             disabled: false,
@@ -183,11 +183,11 @@ const schema = {
             col: 12,
             required: false,
             options: [
-              { id: 'student', label: 'студент', },
-              { id: 'middle', label: 'среднее общее', },
-              { id: 'middle-proffessional', label: 'среднее профессиональное', },
-              { id: 'high', label: 'высшее/бакалавр', },
-              { id: 'magistr', label: 'аспирантура/магистратура', },
+              { code: "7092", id: 'student', label: 'студент', },
+              { code: "7094", id: 'middle', label: 'среднее общее', },
+              { code: "7096", id: 'middle-proffessional', label: 'среднее профессиональное', },
+              { code: "7098", id: 'high', label: 'высшее/бакалавр', },
+              { code: "7100", id: 'magistr', label: 'аспирантура/магистратура', },
             ]
           },
           laguageKnowledge: {
@@ -204,9 +204,9 @@ const schema = {
             col: 6,
             required: false,
             options: [
-              { id: 'native', label: 'свободно', },
-              { id: 'middle', label: 'средний уровень', },
-              { id: 'basic', label: 'базовые знания', },
+              { code: "7102", id: 'native', label: 'свободно', },
+              { code: "7104", id: 'middle', label: 'средний уровень', },
+              { code: "7106", id: 'basic', label: 'базовые знания', },
             ],
           },
         },
@@ -227,11 +227,11 @@ const schema = {
             col: 12,
             required: false,
             options: [
-              { id: 'A', label: 'A' },
-              { id: 'B', label: 'B' },
-              { id: 'C', label: 'C' },
-              { id: 'D', label: 'D' },
-              { id: 'E', label: 'E' },
+              { id: 'A', code: '7118', label: 'A' },
+              { id: 'B', code: '7120', label: 'B' },
+              { id: 'C', code: '7122', label: 'C' },
+              { id: 'D', code: '7124', label: 'D' },
+              { id: 'E', code: '7126', label: 'E' },
             ],
           },
         },
@@ -279,9 +279,9 @@ const schema = {
             col: 12,
             required: false,
             options: [
-              { id: 'invite', label: 'пригласил рекрутер', },
-              { id: 'recommendation', label: 'по рекомендации', },
-              { id: 'self', label: 'самостоятельно', },
+              { id: 'invite', code: "7128", label: 'пригласил рекрутер', },
+              { id: 'recommendation', code: "7130", label: 'по рекомендации', },
+              { id: 'self', code: "7132", label: 'самостоятельно', },
             ],
           },
         },

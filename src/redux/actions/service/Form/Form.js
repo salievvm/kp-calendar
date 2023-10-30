@@ -2,8 +2,8 @@ import store from "../../../store";
 
 import App from "../../model/App";
 import ContactApi from "../../api/Contact";
-import CrmItemApi from "../../api/CrmItem";
-import { CrmCandidate, CrmRelatives } from "../../model";
+
+import { CrmCandidate, CrmExperience, CrmRelatives } from "../../model";
 
 class FormService {
   constructor(api) {
@@ -12,6 +12,7 @@ class FormService {
     this.obContactApi = new ContactApi(api);
     this.obCrmCandidate = new CrmCandidate(api);
     this.obCrmRelatives = new CrmRelatives(api);
+    this.obCrmExperience = new CrmExperience(api);
   }
 
   send = async () => {
@@ -29,6 +30,7 @@ class FormService {
     const sourceRecognition = form.schema.sourceRecognition.sections[0].items;
 
     const relatives = form.schema.family.sections;
+    const experience = form.schema.experience.sections;
 
     const fields = await this.obCrmCandidate.getFields();
     const resCandidate = await this.obCrmCandidate.add({
@@ -42,16 +44,24 @@ class FormService {
 
     const candidateId = resCandidate.item.id;
 
-    const fieldsRelatives = await this.obCrmRelatives.getFields();
-    const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
+    // const fieldsRelatives = await this.obCrmRelatives.getFields();
+    // const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
+
+    const fieldsExperience = await this.obCrmExperience.getFields();
+    const resExperience = await this.obCrmExperience.add(experience, candidateId);
 
     const resUpdate = await this.obCrmCandidate.update(
       candidateId,
-      { "ufCrm14Relatives": resRelatives },
+      {
+        // "ufCrm14Relatives": resRelatives,
+        "ufCrm14Experience": resExperience,
+      },
     );
 
-    console.log({ fields, fieldsRelatives });
-    console.log({ resCandidate, resRelatives, resUpdate });
+    // console.log({ fields, fieldsRelatives });
+    // console.log({ resCandidate, resRelatives, resUpdate });
+
+    console.log({ experience, fieldsExperience });
   }
 }
 

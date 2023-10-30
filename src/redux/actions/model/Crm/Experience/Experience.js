@@ -1,7 +1,12 @@
+import { FIELD_TYPES } from "../../../../../consts";
 import CrmItemApi from "../../../api/CrmItem";
 import { entityTypeId, schema } from "./dto";
 
-class Relatives {
+const {
+  dateMulti,
+} = FIELD_TYPES;
+
+class Experience {
   entityTypeId = entityTypeId;
   schema = schema;
 
@@ -22,7 +27,14 @@ class Relatives {
       for (const [apiCode, code] of Object.entries(schema)) {
         if (code && data[code]) {
           fields[apiCode] = data[code].value;
+
           if (data[code].value) {
+            if (apiCode === "ufCrm_20_PERIOD_OF_WORK_1") {
+              fields[apiCode] = data[code].value[0];
+            } else if (apiCode === "ufCrm_20_PERIOD_OF_WORK_2") {
+              fields[apiCode] = data[code].value[1];
+            }
+
             isFilled = true;
           }
         }
@@ -42,4 +54,4 @@ class Relatives {
   }
 }
 
-export default Relatives;
+export default Experience;

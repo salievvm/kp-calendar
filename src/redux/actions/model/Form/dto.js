@@ -388,6 +388,7 @@ const schema = {
             type: text,
             col: 12,
             required: false,
+            value: 'Компания 1',
           },
           positionAtWork: {
             title: 'Занимаемая должность',
@@ -395,6 +396,7 @@ const schema = {
             type: text,
             col: 12,
             required: false,
+            value: 'Верстальщик',
           },
           periodOfWork: {
             title: 'Период работы',
@@ -411,6 +413,7 @@ const schema = {
             type: text,
             col: 12,
             required: false,
+            value: 'Заставили',
           },
         },
       },
@@ -434,6 +437,7 @@ const schema = {
             type: text,
             col: 12,
             required: false,
+            value: 'Игорь Леонидович',
           },
           phone: {
             title: 'Контактный телефон',
@@ -441,6 +445,7 @@ const schema = {
             type: phone,
             col: 12,
             required: false,
+            value: '+7 (777) 323 3456',
           },
           positionAtWork: {
             title: 'Занимаемая должность',
@@ -448,6 +453,7 @@ const schema = {
             type: text,
             col: 12,
             required: false,
+            value: 'Пожарник',
           },
         },
       },

@@ -32,6 +32,7 @@ const schema = {
             code: 'UF_CRM_14_VACANCY',
             type: text,
             col: 12,
+            value: 'Тест: Разработчик ПО',
           },
           whoRecommended: {
             title: 'ФИО сотрудника, кто порекомендовал вакансию',
@@ -39,6 +40,7 @@ const schema = {
             type: text,
             col: 12,
             disabled: false,
+            value: 'Василий Иванович',
           },
           nobodyRecommended: {
             title: 'Никто не рекоммендовал',
@@ -62,6 +64,7 @@ const schema = {
             type: text,
             col: 12,
             required: true,
+            value: 'Тестов Кандидат Петрович',
           },
           fioPrevious: {
             title: 'ФИО до изменения',
@@ -70,6 +73,7 @@ const schema = {
             col: 12,
             disabled: false,
             linkedField: 'fio',
+            value: '',
           },
           fioChanged: {
             title: 'Данные не менялись',
@@ -77,6 +81,7 @@ const schema = {
             type: radio,
             linkedField: 'fioPrevious',
             col: 12,
+            value: true,
           },
           addressRegistration: {
             title: 'Адрес регистрации',
@@ -84,6 +89,7 @@ const schema = {
             type: text,
             col: 12,
             required: true,
+            value: 'уд. Гродненская, д. 23',
           },
           addressFact: {
             title: 'Адрес фактического проживания',
@@ -100,6 +106,7 @@ const schema = {
             type: radio,
             linkedField: 'addressFact',
             col: 12,
+            value: true,
           },
           phone: {
             title: 'Контактный телефон',
@@ -107,6 +114,7 @@ const schema = {
             type: phone,
             col: 6,
             required: true,
+            value: '+7 (707) 570 9446',
           },
           email: {
             title: 'Адрес электронной почты',
@@ -114,6 +122,7 @@ const schema = {
             type: email,
             col: 6,
             required: true,
+            value: 'test@exmple.com',
           },
         },
       },
@@ -188,7 +197,8 @@ const schema = {
               { code: "7096", id: 'middle-proffessional', label: 'среднее профессиональное', },
               { code: "7098", id: 'high', label: 'высшее/бакалавр', },
               { code: "7100", id: 'magistr', label: 'аспирантура/магистратура', },
-            ]
+            ],
+            value: { code: "7094", id: 'middle', label: 'среднее общее', },
           },
           laguageKnowledge: {
             title: 'Знание языков',
@@ -196,6 +206,7 @@ const schema = {
             type: text,
             col: 6,
             required: false,
+            value: 'English, Russion',
           },
           levelProficiency: {
             title: 'Уровень владения',
@@ -208,6 +219,7 @@ const schema = {
               { code: "7104", id: 'middle', label: 'средний уровень', },
               { code: "7106", id: 'basic', label: 'базовые знания', },
             ],
+            value: { code: "7104", id: 'middle', label: 'средний уровень', },
           },
         },
       },
@@ -233,6 +245,7 @@ const schema = {
               { id: 'D', code: '7124', label: 'D' },
               { id: 'E', code: '7126', label: 'E' },
             ],
+            value: ['A', 'E'],
           },
         },
       },
@@ -260,6 +273,7 @@ const schema = {
             linkedField: 'lawViolationArticle',
             col: 12,
             required: false,
+            value: true,
           },
         },
       },
@@ -283,6 +297,7 @@ const schema = {
               { id: 'recommendation', code: "7130", label: 'по рекомендации', },
               { id: 'self', code: "7132", label: 'самостоятельно', },
             ],
+            value: { id: 'recommendation', code: "7130", label: 'по рекомендации', },
           },
         },
       },
@@ -305,6 +320,7 @@ const schema = {
             type: text,
             col: 12,
             required: true,
+            value: 'Брат',
           },
           relativeFio: {
             title: 'ФИО родственника',
@@ -312,6 +328,7 @@ const schema = {
             type: text,
             col: 12,
             required: true,
+            value: 'Иванов Виктор Петрович',
           },
           phone: {
             title: 'Контактный телефон',
@@ -319,6 +336,7 @@ const schema = {
             type: phone,
             col: 12,
             required: true,
+            value: '+7 (707) 570 9446',
           },
         },
       },
@@ -331,6 +349,7 @@ const schema = {
             type: text,
             col: 12,
             required: false,
+            value: 'Отец',
           },
           relativeFio: {
             title: 'ФИО родственника',
@@ -338,6 +357,7 @@ const schema = {
             type: text,
             col: 12,
             required: false,
+            value: 'Иванов Андрей Петрович',
           },
           phone: {
             title: 'Контактный телефон',

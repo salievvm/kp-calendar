@@ -28,13 +28,17 @@ class Candidate {
       if (code && data[code]) {
         switch (data[code].type) {
           case list:
-            fields[apiCode] = data[code].value.code;
+            if (data[code].value) {
+              fields[apiCode] = data[code].value.code;
+            }
             break;
           case radioGroup:
             const { options } = data[code];
-            fields[apiCode] = data[code].value.map(value => {
-              return options.find((option) => option.id === value).code;
-            });
+            if (data[code].value) {
+              fields[apiCode] = data[code].value.map(value => {
+                return options.find((option) => option.id === value).code;
+              });
+            }
             break;
           default:
             fields[apiCode] = data[code].value;
@@ -43,11 +47,11 @@ class Candidate {
       }
     }
 
-    // console.log({ fields });
-
-    // return fields;
-
     return await this.api.add(fields);
+  }
+
+  update = async (id, fields) => {
+    return await this.api.update(id, fields);
   }
 
   getFields = async () => {

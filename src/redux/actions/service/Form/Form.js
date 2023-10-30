@@ -3,7 +3,7 @@ import store from "../../../store";
 import App from "../../model/App";
 import ContactApi from "../../api/Contact";
 import CrmItemApi from "../../api/CrmItem";
-import { CrmCandidate } from "../../model";
+import { CrmCandidate, CrmRelatives } from "../../model";
 
 class FormService {
   constructor(api) {
@@ -11,6 +11,7 @@ class FormService {
     this.app = new App();
     this.obContactApi = new ContactApi(api);
     this.obCrmCandidate = new CrmCandidate(api);
+    this.obCrmRelatives = new CrmRelatives(api);
   }
 
   send = async () => {
@@ -27,8 +28,10 @@ class FormService {
     const main = form.schema.main.sections[0].items;
     const sourceRecognition = form.schema.sourceRecognition.sections[0].items;
 
+    const relatives = form.schema.family.sections;
+
     const fields = await this.obCrmCandidate.getFields();
-    const res = await this.obCrmCandidate.add({
+    const resCandidate = await this.obCrmCandidate.add({
       ...personal,
       ...additional,
       ...carLicense,
@@ -37,8 +40,18 @@ class FormService {
       ...sourceRecognition,
     });
 
-    console.log({ fields });
-    console.log({ res });
+    const candidateId = resCandidate.item.id;
+
+    const fieldsRelatives = await this.obCrmRelatives.getFields();
+    const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
+
+    const resUpdate = await this.obCrmCandidate.update(
+      candidateId,
+      { "ufCrm14Relatives": resRelatives },
+    );
+
+    console.log({ fields, fieldsRelatives });
+    console.log({ resCandidate, resRelatives, resUpdate });
   }
 }
 

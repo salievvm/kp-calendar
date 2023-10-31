@@ -9,6 +9,7 @@ import { CustomAlertInfo } from '../../components/@ui/CustomAlert';
 import CustomPageHeader from '../../components/@ui/CustomPageHeader/CustomPageHeader';
 
 import useApp from './hooks/useApp';
+import AppError from '../AppError';
 
 const FormCandidate = () => {
   const {
@@ -34,6 +35,7 @@ const FormCandidate = () => {
           schema={schema}
         />
       </CustomCard>
+      <AppError />
       <CustomCard margin={'24px 0 24px 0'}>
         <CustomTypography />
       </CustomCard>

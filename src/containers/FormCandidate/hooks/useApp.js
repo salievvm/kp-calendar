@@ -27,7 +27,6 @@ const useApp = () => {
 
   const handleSendForm = async () => {
     await obFormService.send();
-    // handleMakeLoading();
   }
 
   const handleAddSubSection = (section) => {

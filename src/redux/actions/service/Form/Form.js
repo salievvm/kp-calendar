@@ -24,9 +24,39 @@ class FormService {
     this.obCrmRecommendation = new CrmRecommendation(api);
   }
 
+  validate = (schema) => {
+    let isValidate = true;
+    const errorDescription = [];
+
+    for (const chapter of Object.values(schema)) {
+      console.group(chapter.title);
+      for (const section of Object.values(chapter.sections)) {
+        const { items } = section;
+        for (const item of Object.values(items)) {
+          console.log(item);
+          if (item.required === true && !item.value) {
+            isValidate = false;
+            errorDescription.push(item.title);
+          }
+        }
+      }
+      console.groupEnd();
+    }
+
+    return [isValidate, errorDescription]
+  }
+
   send = async () => {
     this.app.setLoading();
     const { form } = store.getState();
+    const resValidate = this.validate(form.schema);
+
+    if (!resValidate[0]) {
+      return this.app.setError(`Неверно заполнены поля:
+
+      ${resValidate[1].join(', ')}
+      `);
+    }
 
     console.log({ schema: form.schema });
 

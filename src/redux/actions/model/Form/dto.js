@@ -43,7 +43,7 @@ const schema = {
             // value: 'Василий Иванович',
           },
           nobodyRecommended: {
-            title: 'Никто не рекоммендовал',
+            title: 'Никто не рекомендовал',
             code: '',
             type: radio,
             col: 12,
@@ -475,7 +475,7 @@ const schema = {
             code: '',
             type: file,
             col: 12,
-            required: true,
+            required: false,
           },
         },
       },

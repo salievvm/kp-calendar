@@ -56,8 +56,6 @@ class Candidate {
       }
     }
 
-    console.log({ candidateFields: fields });
-
     return await this.api.add(fields);
   }
 

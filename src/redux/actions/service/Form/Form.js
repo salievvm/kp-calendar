@@ -29,8 +29,6 @@ class FormService {
     const { form } = store.getState();
 
     console.log({ schema: form.schema });
-    // console.log({ contact: this.obContactApi });
-    // console.log({ candidate: this.obCandidateApi });
 
     const personal = form.schema.personal.sections[0].items;
     const additional = form.schema.additional.sections[0].items;
@@ -45,16 +43,12 @@ class FormService {
     const experience = form.schema.experience.sections;
     const recommendation = form.schema.recommendation.sections;
 
-    const fieldsContact = await this.obCrmContact.getFields();
     const contactId = await this.obCrmContact.add({
       ...personal,
       ...passport,
       ...main,
     });
 
-    console.log({ contactId, fieldsContact });
-
-    const fields = await this.obCrmCandidate.getFields();
     const resCandidate = await this.obCrmCandidate.add({
       ...personal,
       ...additional,
@@ -67,16 +61,11 @@ class FormService {
 
     const candidateId = resCandidate.item.id;
 
-    const fieldsRelatives = await this.obCrmRelatives.getFields();
     const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
-
-    const fieldsExperience = await this.obCrmExperience.getFields();
     const resExperience = await this.obCrmExperience.add(experience, candidateId);
-
-    const fieldsRecommendation = await this.obCrmRecommendation.getFields();
     const resRecommendation = await this.obCrmRecommendation.add(recommendation, candidateId);
 
-    const resUpdate = await this.obCrmCandidate.update(
+    await this.obCrmCandidate.update(
       candidateId,
       {
         "ufCrm14Relatives": resRelatives,
@@ -84,12 +73,6 @@ class FormService {
         "ufCrm14Recommendations": resRecommendation,
       },
     );
-
-    console.log({ fields, fieldsRelatives });
-    console.log({ resCandidate, resRelatives, resUpdate });
-
-    console.log({ experience, fieldsExperience });
-    console.log({ fieldsRecommendation, resRecommendation });
     
     this.app.endLoading();
   }

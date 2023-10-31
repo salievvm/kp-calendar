@@ -11,6 +11,7 @@ export default function Container(theme) {
           },
         },
         maxWidthMd: {
+          marginBottom: 48,
           maxWidth: CONTAINER_WIDTH_MD,
           paddingLeft: 0,
           paddingRight: 0,

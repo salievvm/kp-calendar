@@ -2,17 +2,16 @@ import React from 'react';
 import { Grid } from '@mui/material';
 
 import FormCandidateSectionList from './FormCandidateSectionList';
-import CustomTypography from '../../components/@ui/CustomTypography';
 import CustomCard from '../../components/@ui/CustomCard';
 import { CustomAlertInfo } from '../../components/@ui/CustomAlert';
 
 import CustomPageHeader from '../../components/@ui/CustomPageHeader/CustomPageHeader';
 
 import useApp from './hooks/useApp';
-import AppError from '../AppError';
 
 const FormCandidate = () => {
   const {
+    app,
     schema,
     title,
     subtitle,
@@ -21,25 +20,23 @@ const FormCandidate = () => {
   } = useApp();
 
   return (
-    <Grid container direction="column">
-      <CustomPageHeader
-        title={title}
-        subtitle={subtitle}
-      />
-      <CustomCard>
-        <CustomAlertInfo
-          title={alertTitle}
-          subtitle={alertSubtitle}
+    <>{!app.send ? (
+      <Grid container direction="column">
+        <CustomPageHeader
+          title={title}
+          subtitle={subtitle}
         />
-        <FormCandidateSectionList
-          schema={schema}
-        />
-      </CustomCard>
-      <AppError />
-      <CustomCard margin={'24px 0 24px 0'}>
-        <CustomTypography />
-      </CustomCard>
-    </Grid>
+        <CustomCard>
+          <CustomAlertInfo
+            title={alertTitle}
+            subtitle={alertSubtitle}
+          />
+          <FormCandidateSectionList
+            schema={schema}
+          />
+        </CustomCard>
+      </Grid>
+    ) : null}</>
   )
 };
 

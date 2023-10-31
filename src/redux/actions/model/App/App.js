@@ -4,8 +4,10 @@ import store from "../../../store";
 
 import {
   APP_LOADED,
+  APP_SET_DEFAULT,
   APP_SET_ERROR,
   APP_SET_LOADING,
+  APP_SET_SEND,
   APP_UNSET_ERROR
 } from "../../../reducers/app";
 
@@ -31,9 +33,21 @@ class App {
     });
   }
 
-  unsetError = (error) => {
+  unsetError = () => {
     store.dispatch({
       type: APP_UNSET_ERROR,
+    });
+  }
+
+  setSend = () => {
+    store.dispatch({
+      type: APP_SET_SEND,
+    });
+  }
+  
+  setDefault = () => {
+    store.dispatch({
+      type: APP_SET_DEFAULT,
     });
   }
 }

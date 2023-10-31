@@ -104,6 +104,7 @@ class FormService {
       },
     );
     
+    this.app.setSend();
     this.app.endLoading();
   }
 }

@@ -3,7 +3,11 @@ export const APP_UNSET_ERROR = 'APP_UNSET_ERROR';
 export const APP_SET_LOADING = 'APP_SET_LOADING';
 export const APP_LOADED = 'APP_LOADED';
 
+export const APP_SET_SEND = 'APP_SET_SEND';
+export const APP_SET_DEFAULT = 'APP_SET_DEFAULT';
+
 const initState = {
+  send: false,
   loading: false,
   error: false,
   error_description: '',
@@ -25,6 +29,10 @@ function reducer(state = initState, action) {
         error: false,
         error_description: '',
       };
+    case APP_SET_SEND:
+      return { send: true };
+    case APP_SET_DEFAULT:
+      return { send: false };
     default:
       return state;
   }

@@ -22,11 +22,18 @@ class Candidate {
   add = async (data) => {
     const fields = {};
 
-    console.log({ data });
+    // console.log({ data });
 
     for (const [apiCode, code] of Object.entries(schema)) {
       if (code && data[code]) {
         switch (data[code].type) {
+          case file:
+            if (data[code].value) {
+              fields[apiCode] = data[code].value.map(value => (
+                [value.name, value.base64]
+              ));
+            }
+            break;
           case list:
             if (data[code].value) {
               fields[apiCode] = data[code].value.code;
@@ -46,6 +53,8 @@ class Candidate {
         }
       }
     }
+
+    console.log({ candidateFields: fields });
 
     return await this.api.add(fields);
   }

@@ -3,7 +3,12 @@ import store from "../../../store";
 import App from "../../model/App";
 import ContactApi from "../../api/Contact";
 
-import { CrmCandidate, CrmExperience, CrmRelatives } from "../../model";
+import {
+  CrmCandidate,
+  CrmExperience,
+  CrmRecommendation,
+  CrmRelatives,
+} from "../../model";
 
 class FormService {
   constructor(api) {
@@ -13,9 +18,11 @@ class FormService {
     this.obCrmCandidate = new CrmCandidate(api);
     this.obCrmRelatives = new CrmRelatives(api);
     this.obCrmExperience = new CrmExperience(api);
+    this.obCrmRecommendation = new CrmRecommendation(api);
   }
 
   send = async () => {
+    this.app.setLoading();
     const { form } = store.getState();
 
     console.log({ schema: form.schema });
@@ -28,9 +35,11 @@ class FormService {
     const lawViolation = form.schema.lawViolation.sections[0].items;
     const main = form.schema.main.sections[0].items;
     const sourceRecognition = form.schema.sourceRecognition.sections[0].items;
+    const documents = form.schema.documents.sections[0].items;
 
     const relatives = form.schema.family.sections;
     const experience = form.schema.experience.sections;
+    const recommendation = form.schema.recommendation.sections;
 
     const fields = await this.obCrmCandidate.getFields();
     const resCandidate = await this.obCrmCandidate.add({
@@ -40,28 +49,36 @@ class FormService {
       ...lawViolation,
       ...main,
       ...sourceRecognition,
+      ...documents,
     });
 
     const candidateId = resCandidate.item.id;
 
-    // const fieldsRelatives = await this.obCrmRelatives.getFields();
-    // const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
+    const fieldsRelatives = await this.obCrmRelatives.getFields();
+    const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
 
     const fieldsExperience = await this.obCrmExperience.getFields();
     const resExperience = await this.obCrmExperience.add(experience, candidateId);
 
+    const fieldsRecommendation = await this.obCrmRecommendation.getFields();
+    const resRecommendation = await this.obCrmRecommendation.add(recommendation, candidateId);
+
     const resUpdate = await this.obCrmCandidate.update(
       candidateId,
       {
-        // "ufCrm14Relatives": resRelatives,
+        "ufCrm14Relatives": resRelatives,
         "ufCrm14Experience": resExperience,
+        "ufCrm14Recommendations": resRecommendation,
       },
     );
 
-    // console.log({ fields, fieldsRelatives });
-    // console.log({ resCandidate, resRelatives, resUpdate });
+    console.log({ fields, fieldsRelatives });
+    console.log({ resCandidate, resRelatives, resUpdate });
 
     console.log({ experience, fieldsExperience });
+    console.log({ fieldsRecommendation, resRecommendation });
+    
+    this.app.endLoading();
   }
 }
 

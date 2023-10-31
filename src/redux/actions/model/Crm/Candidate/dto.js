@@ -20,6 +20,7 @@ const schema = {
   "ufCrm14SourceRecognition": "sourceRecognition",
   "ufCrm14Phone": "phone",
   "ufCrm14Email": "email",
+  "ufCrm14Documents": "documents",
 };
 
 export {

@@ -1,8 +1,3 @@
-import YT from '../img/yt.svg';
-import VK from '../img/vk.svg';
-import TG from '../img/tg.svg';
-import HH from '../img/hh.svg';
-
 export const InfoIcon = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path

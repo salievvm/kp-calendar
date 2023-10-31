@@ -3,10 +3,7 @@ import CrmItemApi from "../../../api/CrmItem";
 import { entityTypeId, schema } from "./dto";
 
 const {
-  radio,
   radioGroup,
-  phone,
-  email,
   file,
   list,
 } = FIELD_TYPES;

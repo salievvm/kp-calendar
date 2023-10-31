@@ -1,10 +1,5 @@
-import { FIELD_TYPES } from "../../../../../consts";
 import CrmItemApi from "../../../api/CrmItem";
 import { entityTypeId, schema } from "./dto";
-
-const {
-  dateMulti,
-} = FIELD_TYPES;
 
 class Recommendation {
   entityTypeId = entityTypeId;

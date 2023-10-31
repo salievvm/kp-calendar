@@ -37,11 +37,6 @@ class Form {
       data: { section }
     })
   }
-
-  send = () => {
-    const { form } = store.getState();
-    console.log(form.schema);
-  }
 }
 
 export default Form;

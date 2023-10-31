@@ -16,23 +16,25 @@ const initState = {
 function reducer(state = initState, action) {
   switch (action.type) {
     case APP_SET_LOADING:
-      return { loading: true };
+      return { ...state, loading: true };
     case APP_LOADED:
-      return { loading: false };
+      return { ...state, loading: false };
     case APP_SET_ERROR:
       return {
+        ...state,
         error: true,
         error_description: action.data.error_description,
       };
     case APP_UNSET_ERROR:
       return {
+        ...state,
         error: false,
         error_description: '',
       };
     case APP_SET_SEND:
-      return { send: true };
+      return { ...state, send: true };
     case APP_SET_DEFAULT:
-      return { send: false };
+      return { ...state, send: false };
     default:
       return state;
   }

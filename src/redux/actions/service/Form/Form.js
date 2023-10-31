@@ -2,7 +2,6 @@ import store from "../../../store";
 
 import App from "../../model/App";
 
-
 import {
   CrmContact,
   CrmCandidate,
@@ -36,6 +35,13 @@ class FormService {
           console.log(item);
           if (item.required === true && !item.value) {
             isValidate = false;
+            // let title = item.title;
+
+            // if (!title) {
+            //   if (item.type === radioGroup) {
+            //     title = 'Наличие водительских прав';
+            //   }
+            // }
             errorDescription.push(item.title);
           }
         }
@@ -47,7 +53,6 @@ class FormService {
   }
 
   send = async () => {
-    this.app.setLoading();
     const { form } = store.getState();
     const resValidate = this.validate(form.schema);
 
@@ -57,6 +62,8 @@ class FormService {
       ${resValidate[1].join(', ')}
       `);
     }
+
+    this.app.setLoading();
 
     console.log({ schema: form.schema });
 

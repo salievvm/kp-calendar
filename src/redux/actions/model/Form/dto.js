@@ -233,7 +233,7 @@ const schema = {
       0: {
         items: {
           carLicenseCategory: {
-            title: '',
+            title: 'Наличие водительских прав',
             code: '',
             type: radioGroup,
             col: 12,
@@ -471,7 +471,7 @@ const schema = {
       0: {
         items: {
           documents: {
-            title: '',
+            title: 'Документы',
             code: '',
             type: file,
             col: 12,

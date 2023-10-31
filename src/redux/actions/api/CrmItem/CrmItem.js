@@ -5,7 +5,7 @@ class CrmItemApi {
   }
 
   getList = async () => {
-    return this.api.BatchQuery(
+    return await this.api.BatchQuery(
       'crm.item.list',
       {
         entityTypeId: this.entityTypeId,
@@ -15,7 +15,7 @@ class CrmItemApi {
   };
 
   update = async (id, fields) => {
-    return this.api.Get(
+    return await this.api.Get(
       'crm.item.update',
       {
         entityTypeId: this.entityTypeId,
@@ -26,7 +26,7 @@ class CrmItemApi {
   };
 
   add = async (fields) => {
-    return this.api.Get(
+    return await this.api.Get(
       'crm.item.add',
       {
         entityTypeId: this.entityTypeId,
@@ -36,7 +36,7 @@ class CrmItemApi {
   };
 
   getFields = async () => {
-    return this.api.BatchQuery(
+    return await this.api.BatchQuery(
       'crm.item.fields',
       {
         entityTypeId: this.entityTypeId,
@@ -45,7 +45,7 @@ class CrmItemApi {
   }
 
   get = async (id) => {
-    return this.api.Get(
+    return await this.api.Get(
       'crm.item.get',
       {
         entityTypeId: this.entityTypeId,
@@ -55,7 +55,7 @@ class CrmItemApi {
   }
 
   getByFilter = async ({ select, order, filter }) => {
-    return this.api.BatchQuery(
+    return await this.api.BatchQuery(
       'crm.item.list',
       {
         entityTypeId: this.entityTypeId,
@@ -68,7 +68,7 @@ class CrmItemApi {
   }
 
   getLinkedItems = async (obBusinessProcess, projectId) => {
-    return this.api.BatchQuery(
+    return await this.api.BatchQuery(
       'crm.item.list',
       {
         entityTypeId: obBusinessProcess.entityTypeId,

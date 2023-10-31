@@ -4,7 +4,7 @@ class ContactApi {
   }
 
   add = async (fields) => {
-    return this.api.Get(
+    return await this.api.Get(
       'crm.contact.add',
       {
         fields,
@@ -25,7 +25,7 @@ class ContactApi {
   };
 
   get = async (id) => {
-    return this.api.Get(
+    return await this.api.Get(
       'crm.contact.get',
       {
         id
@@ -34,7 +34,7 @@ class ContactApi {
   }
 
   getByFilter = async ({ select, order, filter }) => {
-    return this.api.BatchQuery(
+    return await this.api.BatchQuery(
       'crm.contact.list',
       {
         select,
@@ -45,14 +45,11 @@ class ContactApi {
     );
   }
 
-  // getFields = async () => {
-  //   return this.api.BatchQuery(
-  //     'crm.item.fields',
-  //     {
-  //       // entityTypeId: this.entityTypeId,
-  //     }
-  //   );
-  // }
+  getFields = async () => {
+    return await this.api.Get(
+      'crm.contact.fields', {}
+    );
+  }
 
   // getLinkedItems = async (obBusinessProcess, projectId) => {
   //   return this.api.BatchQuery(

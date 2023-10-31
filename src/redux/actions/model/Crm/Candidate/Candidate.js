@@ -19,8 +19,10 @@ class Candidate {
     this.api = new CrmItemApi(api, this.entityTypeId);
   }
 
-  add = async (data) => {
-    const fields = {};
+  add = async (data, contactId) => {
+    const fields = {
+      contactId
+    };
 
     // console.log({ data });
 

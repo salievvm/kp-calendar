@@ -1,9 +1,10 @@
 import store from "../../../store";
 
 import App from "../../model/App";
-import ContactApi from "../../api/Contact";
+
 
 import {
+  CrmContact,
   CrmCandidate,
   CrmExperience,
   CrmRecommendation,
@@ -14,7 +15,7 @@ class FormService {
   constructor(api) {
     this.api = api;
     this.app = new App();
-    this.obContactApi = new ContactApi(api);
+    this.obCrmContact = new CrmContact(api);
     this.obCrmCandidate = new CrmCandidate(api);
     this.obCrmRelatives = new CrmRelatives(api);
     this.obCrmExperience = new CrmExperience(api);
@@ -36,47 +37,61 @@ class FormService {
     const main = form.schema.main.sections[0].items;
     const sourceRecognition = form.schema.sourceRecognition.sections[0].items;
     const documents = form.schema.documents.sections[0].items;
+    const passport = form.schema.passport.sections[0].items;
 
     const relatives = form.schema.family.sections;
     const experience = form.schema.experience.sections;
     const recommendation = form.schema.recommendation.sections;
 
-    const fields = await this.obCrmCandidate.getFields();
-    const resCandidate = await this.obCrmCandidate.add({
-      ...personal,
-      ...additional,
-      ...carLicense,
-      ...lawViolation,
-      ...main,
-      ...sourceRecognition,
-      ...documents,
-    });
+    const contact = await this.obCrmContact.get(944538);
 
-    const candidateId = resCandidate.item.id;
+    console.log({ contact });
 
-    const fieldsRelatives = await this.obCrmRelatives.getFields();
-    const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
+    // const fieldsContact = await this.obCrmContact.getFields();
+    // const contactId = await this.obCrmContact.add({
+    //   ...personal,
+    //   ...passport,
+    //   ...main,
+    // });
 
-    const fieldsExperience = await this.obCrmExperience.getFields();
-    const resExperience = await this.obCrmExperience.add(experience, candidateId);
+    // console.log({ contactId, fieldsContact });
 
-    const fieldsRecommendation = await this.obCrmRecommendation.getFields();
-    const resRecommendation = await this.obCrmRecommendation.add(recommendation, candidateId);
+    // const fields = await this.obCrmCandidate.getFields();
+    // const resCandidate = await this.obCrmCandidate.add({
+    //   ...personal,
+    //   ...additional,
+    //   ...carLicense,
+    //   ...lawViolation,
+    //   ...main,
+    //   ...sourceRecognition,
+    //   ...documents,
+    // }, contactId);
 
-    const resUpdate = await this.obCrmCandidate.update(
-      candidateId,
-      {
-        "ufCrm14Relatives": resRelatives,
-        "ufCrm14Experience": resExperience,
-        "ufCrm14Recommendations": resRecommendation,
-      },
-    );
+    // const candidateId = resCandidate.item.id;
 
-    console.log({ fields, fieldsRelatives });
-    console.log({ resCandidate, resRelatives, resUpdate });
+    // const fieldsRelatives = await this.obCrmRelatives.getFields();
+    // const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
 
-    console.log({ experience, fieldsExperience });
-    console.log({ fieldsRecommendation, resRecommendation });
+    // const fieldsExperience = await this.obCrmExperience.getFields();
+    // const resExperience = await this.obCrmExperience.add(experience, candidateId);
+
+    // const fieldsRecommendation = await this.obCrmRecommendation.getFields();
+    // const resRecommendation = await this.obCrmRecommendation.add(recommendation, candidateId);
+
+    // const resUpdate = await this.obCrmCandidate.update(
+    //   candidateId,
+    //   {
+    //     "ufCrm14Relatives": resRelatives,
+    //     "ufCrm14Experience": resExperience,
+    //     "ufCrm14Recommendations": resRecommendation,
+    //   },
+    // );
+
+    // console.log({ fields, fieldsRelatives });
+    // console.log({ resCandidate, resRelatives, resUpdate });
+
+    // console.log({ experience, fieldsExperience });
+    // console.log({ fieldsRecommendation, resRecommendation });
     
     this.app.endLoading();
   }

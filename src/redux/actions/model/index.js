@@ -1,6 +1,7 @@
 import App from './App';
 import Form from './Form';
 
+import CrmRequisite from './Crm/Requisite';
 import CrmContact from './Crm/Contact';
 import CrmCandidate from './Crm/Candidate';
 import CrmRelatives from './Crm/Relatives';
@@ -18,4 +19,5 @@ export {
   CrmExperience,
   CrmRecommendation,
   CrmContact,
+  CrmRequisite,
 };

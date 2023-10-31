@@ -9,12 +9,14 @@ import {
   CrmExperience,
   CrmRecommendation,
   CrmRelatives,
+  CrmRequisite,
 } from "../../model";
 
 class FormService {
   constructor(api) {
     this.api = api;
     this.app = new App();
+    this.obCrmRequisite = new CrmRequisite(api);
     this.obCrmContact = new CrmContact(api);
     this.obCrmCandidate = new CrmCandidate(api);
     this.obCrmRelatives = new CrmRelatives(api);
@@ -43,55 +45,51 @@ class FormService {
     const experience = form.schema.experience.sections;
     const recommendation = form.schema.recommendation.sections;
 
-    const contact = await this.obCrmContact.get(944538);
+    const fieldsContact = await this.obCrmContact.getFields();
+    const contactId = await this.obCrmContact.add({
+      ...personal,
+      ...passport,
+      ...main,
+    });
 
-    console.log({ contact });
+    console.log({ contactId, fieldsContact });
 
-    // const fieldsContact = await this.obCrmContact.getFields();
-    // const contactId = await this.obCrmContact.add({
-    //   ...personal,
-    //   ...passport,
-    //   ...main,
-    // });
+    const fields = await this.obCrmCandidate.getFields();
+    const resCandidate = await this.obCrmCandidate.add({
+      ...personal,
+      ...additional,
+      ...carLicense,
+      ...lawViolation,
+      ...main,
+      ...sourceRecognition,
+      ...documents,
+    }, contactId);
 
-    // console.log({ contactId, fieldsContact });
+    const candidateId = resCandidate.item.id;
 
-    // const fields = await this.obCrmCandidate.getFields();
-    // const resCandidate = await this.obCrmCandidate.add({
-    //   ...personal,
-    //   ...additional,
-    //   ...carLicense,
-    //   ...lawViolation,
-    //   ...main,
-    //   ...sourceRecognition,
-    //   ...documents,
-    // }, contactId);
+    const fieldsRelatives = await this.obCrmRelatives.getFields();
+    const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
 
-    // const candidateId = resCandidate.item.id;
+    const fieldsExperience = await this.obCrmExperience.getFields();
+    const resExperience = await this.obCrmExperience.add(experience, candidateId);
 
-    // const fieldsRelatives = await this.obCrmRelatives.getFields();
-    // const resRelatives = await this.obCrmRelatives.add(relatives, candidateId);
+    const fieldsRecommendation = await this.obCrmRecommendation.getFields();
+    const resRecommendation = await this.obCrmRecommendation.add(recommendation, candidateId);
 
-    // const fieldsExperience = await this.obCrmExperience.getFields();
-    // const resExperience = await this.obCrmExperience.add(experience, candidateId);
+    const resUpdate = await this.obCrmCandidate.update(
+      candidateId,
+      {
+        "ufCrm14Relatives": resRelatives,
+        "ufCrm14Experience": resExperience,
+        "ufCrm14Recommendations": resRecommendation,
+      },
+    );
 
-    // const fieldsRecommendation = await this.obCrmRecommendation.getFields();
-    // const resRecommendation = await this.obCrmRecommendation.add(recommendation, candidateId);
+    console.log({ fields, fieldsRelatives });
+    console.log({ resCandidate, resRelatives, resUpdate });
 
-    // const resUpdate = await this.obCrmCandidate.update(
-    //   candidateId,
-    //   {
-    //     "ufCrm14Relatives": resRelatives,
-    //     "ufCrm14Experience": resExperience,
-    //     "ufCrm14Recommendations": resRecommendation,
-    //   },
-    // );
-
-    // console.log({ fields, fieldsRelatives });
-    // console.log({ resCandidate, resRelatives, resUpdate });
-
-    // console.log({ experience, fieldsExperience });
-    // console.log({ fieldsRecommendation, resRecommendation });
+    console.log({ experience, fieldsExperience });
+    console.log({ fieldsRecommendation, resRecommendation });
     
     this.app.endLoading();
   }

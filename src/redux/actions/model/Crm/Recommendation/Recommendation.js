@@ -13,7 +13,10 @@ class Recommendation {
     const result = [];
 
     for (const section of Object.values(sections)) {
-      const fields = {};
+      const fields = {
+        "sourceId": "125",
+        "sourceDescription": "Заполнена форма анкеты Кандидата",
+      };
       const data = section.items;
       let isFilled = false;
 

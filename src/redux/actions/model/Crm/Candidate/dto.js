@@ -8,6 +8,7 @@ const schema = {
   "ufCrm14Experience": "",
   "ufCrm14Recommendations": "",
   "ufCrm14Vacancy": "whichPosition",
+  "ufCrm14WhoRecommended": "whoRecommended",
   "title": "fio",
   "ufCrm14FioPrev": "fioPrevious",
   "ufCrm14AddresReg": "addressRegistration",
@@ -21,6 +22,11 @@ const schema = {
   "ufCrm14Phone": "phone",
   "ufCrm14Email": "email",
   "ufCrm14Documents": "documents",
+  "ufCrm14DateBirth": "dateBirth",
+  "ufCrm14PlaceBirth": "placeBirth",
+  "ufCrm14SerialNumber": "serialNumber",
+  "ufCrm14DateOfIssue": "dateOfIssue",
+  "ufCrm14IssuedBy": "issuedBy",
 };
 
 export {

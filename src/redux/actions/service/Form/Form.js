@@ -94,6 +94,7 @@ class FormService {
       ...main,
       ...sourceRecognition,
       ...documents,
+      ...passport,
     }, contactId);
 
     const candidateId = resCandidate.item.id;

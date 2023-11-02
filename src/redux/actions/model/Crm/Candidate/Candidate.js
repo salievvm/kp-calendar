@@ -18,7 +18,9 @@ class Candidate {
 
   add = async (data, contactId) => {
     const fields = {
-      contactId
+      contactId,
+      "sourceId": "125",
+      "sourceDescription": "Заполнена форма анкеты Кандидата",
     };
 
     // console.log({ data });

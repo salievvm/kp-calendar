@@ -15,7 +15,10 @@ class Contact {
   }
 
   add = async (data) => {
-    const fields = {};
+    const fields = {
+      "SOURCE_ID": "125",
+      "SOURCE_DESCRIPTION": "Заполнена форма анкеты Кандидата",
+    };
 
     for (const [apiCode, code] of Object.entries(this.schema)) {
       if (code && data[code]) {
